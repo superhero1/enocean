@@ -625,7 +625,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1 - Power Failure Detection enabled                                   |
 |PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
 |        |                                                  |        |1 - Power Failure Detection Detected                                  |
-|CMD     |Command indentifier                               |enum    |0-13 - Command ID {value}                                             |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
 |OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
 |        |                                                  |        |1 - Over current switch off: executed                                 |
 |EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
@@ -645,7 +645,344 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 ###### command: 1
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command indentifier                               |enum    |0-13 - Command ID {value}                                             |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
+|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
+|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
+|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
+|        |                                                  |        |4 - Stop dimming                                                      |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+
+##### RORG 0xD2 - FUNC 0x01 - TYPE 0x0B - Smart Plug module with Energy Measurement
+
+###### command: 6
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|qu      |Query                                             |enum    |0 - Query energy                                                      |
+|        |                                                  |        |1 - Query power                                                       |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 7
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
+|        |                                                  |        |1 - Energy [Wh]                                                       |
+|        |                                                  |        |2 - Energy [KWh]                                                      |
+|        |                                                  |        |3 - Power [W]                                                         |
+|        |                                                  |        |4 - Power [KW]                                                        |
+|        |                                                  |        |5-7 - Not used                                                        |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|MV      |Measurement value                                 |enum    |0-4294967295 - Measurement value {value}                              |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
+|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
+|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
+|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
+|        |                                                  |        |4 - Stop dimming                                                      |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 5
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|RM      |Report measurement                                |enum    |0 - Query only                                                        |
+|        |                                                  |        |1 - Query / auto                                                      |
+|RE      |Reset measurement                                 |enum    |0 - Not active                                                        |
+|        |                                                  |        |1 - Trigger signal                                                    |
+|ep      |Measurement mode                                  |enum    |0 - Energy                                                            |
+|        |                                                  |        |1 - Power                                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|MD_LSB  |Measurement delta LSB                             |enum    |0-15 - Measurement delta LSB {value}                                  |
+|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
+|        |                                                  |        |1 - Energy [Wh]                                                       |
+|        |                                                  |        |2 - Energy [KWh]                                                      |
+|        |                                                  |        |3 - Power [W]                                                         |
+|        |                                                  |        |4 - Power [KW]                                                        |
+|        |                                                  |        |5-7 - Not used                                                        |
+|MD_MSB  |Measurement delta MSB                             |enum    |0-255 - Measurement delta MSB {value}                                 |
+|MAT     |Max message time                                  |enum    |0 - Reserved                                                          |
+|        |                                                  |        |1-255 - Max message time {value}                                      |
+|MIT     |Min message time                                  |enum    |0 - Reserved                                                          |
+|        |                                                  |        |1-255 - Min message time {value}                                      |
+
+
+##### RORG 0xD2 - FUNC 0x01 - TYPE 0x0C - Heating module with Pilotwire command and Energy Measurement
+
+###### command: 8
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|PM      |Pilotwire mode                                    |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Comfort                                                           |
+|        |                                                  |        |2 - Eco                                                               |
+|        |                                                  |        |3 - Anti-freeze                                                       |
+|        |                                                  |        |4 - Comfort-1                                                         |
+|        |                                                  |        |5 - Comfort-2                                                         |
+
+###### command: 10
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|PM      |Pilotwire mode                                    |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Comfort                                                           |
+|        |                                                  |        |2 - Eco                                                               |
+|        |                                                  |        |3 - Anti-freeze                                                       |
+|        |                                                  |        |4 - Comfort-1                                                         |
+|        |                                                  |        |5 - Comfort-2                                                         |
+
+###### command: 9
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+
+###### command: 6
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|qu      |Query                                             |enum    |0 - Query energy                                                      |
+|        |                                                  |        |1 - Query power                                                       |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 7
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
+|        |                                                  |        |1 - Energy [Wh]                                                       |
+|        |                                                  |        |2 - Energy [KWh]                                                      |
+|        |                                                  |        |3 - Power [W]                                                         |
+|        |                                                  |        |4 - Power [KW]                                                        |
+|        |                                                  |        |5-7 - Not used                                                        |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|MV      |Measurement value                                 |enum    |0-4294967295 - Measurement value {value}                              |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
+|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
+|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
+|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
+|        |                                                  |        |4 - Stop dimming                                                      |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 5
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|RM      |Report measurement                                |enum    |0 - Query only                                                        |
+|        |                                                  |        |1 - Query / auto                                                      |
+|RE      |Reset measurement                                 |enum    |0 - Not active                                                        |
+|        |                                                  |        |1 - Trigger signal                                                    |
+|ep      |Measurement mode                                  |enum    |0 - Energy                                                            |
+|        |                                                  |        |1 - Power                                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|MD_LSB  |Measurement delta LSB                             |enum    |0-15 - Measurement delta LSB {value}                                  |
+|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
+|        |                                                  |        |1 - Energy [Wh]                                                       |
+|        |                                                  |        |2 - Energy [KWh]                                                      |
+|        |                                                  |        |3 - Power [W]                                                         |
+|        |                                                  |        |4 - Power [KW]                                                        |
+|        |                                                  |        |5-7 - Not used                                                        |
+|MD_MSB  |Measurement delta MSB                             |enum    |0-255 - Measurement delta MSB {value}                                 |
+|MAT     |Max message time                                  |enum    |0 - Reserved                                                          |
+|        |                                                  |        |1-255 - Max message time {value}                                      |
+|MIT     |Min message time                                  |enum    |0 - Reserved                                                          |
+|        |                                                  |        |1-255 - Min message time {value}                                      |
+
+
+##### RORG 0xD2 - FUNC 0x01 - TYPE 0x0F - Slot-in Module with 1 channel and no metering capabilities
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
+|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
+|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
+|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
+|        |                                                  |        |4 - Stop dimming                                                      |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+
+##### RORG 0xD2 - FUNC 0x01 - TYPE 0x12 - Slot-in Module with 2 channels and no metering capabilities
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
 |DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
 |        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
 |        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
