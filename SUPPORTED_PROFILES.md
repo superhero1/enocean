@@ -59,6 +59,20 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 
 </blockquote></details>
 
+<details open><summary>04 <i>(Position Switch, Home and Office Application)</i></summary><blockquote>
+<details><summary>F6-04-01 <i>(Key Card Activated Switch)</i></summary><blockquote>
+
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|KC      |Key Card                                          |enum    |0 - Taken out                                                         |
+|        |                                                  |        |112 - Inserted                                                        |
+|T21     |T21                                               |status  |                                                                      |
+|NU      |NU                                                |status  |                                                                      |
+
+</blockquote></details>
+
+</blockquote></details>
+
 <details open><summary>05 <i>(Detectors)</i></summary><blockquote>
 <details><summary>F6-05-01 <i>(Liquid Leakage Sensor (mechanic harvester))</i></summary><blockquote>
 
@@ -480,6 +494,10 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |HUM     |Rel. Humidity (linear)                            |value   |0.0-200.0 ↔ 0.0-100.0 %                                               |
 |Conc    |Concentration (linear)                            |value   |0.0-255.0 ↔ 0.0-2550.0 ppm                                            |
 |TMP     |Temperature (linear)                              |value   |0.0-255.0 ↔ 0.0-51.0 °C                                               |
+|HSN     |Availability of the Humidity Sensor               |enum    |0 - not available                                                     |
+|        |                                                  |        |1 - available                                                         |
+|TSN     |Availability of the Temperature Sensor            |enum    |0 - not available                                                     |
+|        |                                                  |        |1 - available                                                         |
 
 </blockquote></details>
 
@@ -525,7 +543,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
-|SP      |Set Point (linear)                                |value   |0.0-255.0 ↔ 0.0-255.0 %                                               |
+|SP      |Set Point (linear)                                |value   |0.0-255.0 ↔ 0.0-255.0                                                 |
 |TMP     |Temperature (linear)                              |value   |255.0-0.0 ↔ 0.0-40.0 °C                                               |
 
 </blockquote></details>
@@ -534,7 +552,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
-|SP      |Set Point (linear)                                |value   |0.0-255.0 ↔ 0.0-255.0 %                                               |
+|SP      |Set Point (linear)                                |value   |0.0-255.0 ↔ 0.0-255.0                                                 |
 |TMP     |Temperature (linear)                              |value   |255.0-0.0 ↔ 0.0-40.0 °C                                               |
 |OCC     |Occupancy Button                                  |enum    |0 - Button pressed                                                    |
 |        |                                                  |        |1 - Button released                                                   |
@@ -545,7 +563,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
-|SP      |Set Point (linear)                                |value   |0.0-255.0 ↔ 0.0-255.0 %                                               |
+|SP      |Set Point (linear)                                |value   |0.0-255.0 ↔ 0.0-255.0                                                 |
 |TMP     |Temperature (linear)                              |value   |255.0-0.0 ↔ 0.0-40.0 °C                                               |
 |SLSW    |Slide switch                                      |enum    |0 - Position I / Night / Off                                          |
 |        |                                                  |        |1 - Position O / Day / On                                             |
@@ -641,7 +659,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 
 </blockquote></details>
 
-<details open><summary>12 <i>(Atomated Meter Reading (AMR))</i></summary><blockquote>
+<details open><summary>12 <i>(Automated Meter Reading (AMR))</i></summary><blockquote>
 <details><summary>A5-12-00 <i>(Counter)</i></summary><blockquote>
 
 |shortcut|description                                       |type    |values                                                                |
@@ -878,7 +896,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |SP      |Valve Position or Temperature Setpoint            |value   |0.0-100.0 ↔ 0.0-100.0 %                                               |
-|TMP     |Temperature from RCU                              |value   |0.0-255.0 ↔ 0.0-40.0 °C                                               |
+|TMP     |Temperature from RCU                              |value   |255.0-0.0 ↔ 0.0-40.0 °C                                               |
 |RIN     |Run init sequence                                 |enum    |0 - false                                                             |
 |        |                                                  |        |1 - true                                                              |
 |LFS     |Lift set                                          |enum    |0 - false                                                             |
@@ -1002,10 +1020,63 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 
 </blockquote></details>
 
+<details><summary>A5-20-06 <i>(valve actuator Micropelt MVA009)</i></summary><blockquote>
+
+###### direction: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CV      |Current Valve position                            |value   |0.0-100.0 ↔ 0.0-100.0 %                                               |
+|LOM     |Local Offset Mode defines the format of LO        |enum    |0 - LO is relative                                                    |
+|        |                                                  |        |1 - LO is absolute                                                    |
+|LO      |Current temperature set-point value               |value   |0.0-80.0 ↔ 0.0-40.0 °C                                                |
+|TMP     |Local Ambient or Feed temperature                 |value   |0.0-160.0 ↔ 0.0-80.0 °C                                               |
+|TSL     |Indicates which sensor is used for TMP            |enum    |0 - Ambient sensor temp                                               |
+|        |                                                  |        |1 - Feed sensor temperature                                           |
+|ENIE    |Harvesting status                                 |enum    |0 - Not harvesting                                                    |
+|        |                                                  |        |1 - Harvesting active                                                 |
+|ES      |Charge level of energy storage                    |enum    |0 - Low, almost discharged                                            |
+|        |                                                  |        |1 - Sufficiently charged                                              |
+|DWO     |Window open detection                             |enum    |0 - No open window detected                                           |
+|        |                                                  |        |1 - Open window detected                                              |
+|LRNB    |Telegram type                                     |enum    |0 - Teach-in telegram                                                 |
+|        |                                                  |        |1 - Data telegram                                                     |
+|RCE     |Indicates radio communication errors              |enum    |0 - Radio communication is stable                                     |
+|        |                                                  |        |1 - Six or more consecutive radio communication errors have occurred  |
+|RSS     |Weak radio signal warning                         |enum    |0 - Radio signal is strong                                            |
+|        |                                                  |        |1 - Radio signal is weak (-77 dBm or less)                            |
+|ACO     |Reports blocked actuator (motor)                  |enum    |0 - Actuator working correctly                                        |
+|        |                                                  |        |1 - Actuator is blocked                                               |
+
+###### direction: 2
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|SP      |Valve Position or Temperature Set point           |value   |0.0-100.0 ↔ 0.0-100.0 %                                               |
+|TMP     |Room temperature from room control unit           |value   |0.0-160.0 ↔ 0.0-40.0 °C                                               |
+|REF     |Execute reference-run                             |enum    |0 - Normal operation                                                  |
+|        |                                                  |        |1 - Reference-run and Maintenance Interval                            |
+|RFC     |Radio duty cycle selection.                       |enum    |0 - AUTO (default)                                                    |
+|        |                                                  |        |1 - 2 minutes                                                         |
+|        |                                                  |        |2 - 5 minutes                                                         |
+|        |                                                  |        |3 - 10 minutes                                                        |
+|        |                                                  |        |4 - 20 minutes                                                        |
+|        |                                                  |        |5 - 30 minutes                                                        |
+|        |                                                  |        |6 - 60 minutes                                                        |
+|        |                                                  |        |7 - 120 minutes                                                       |
+|SB      |Initiate summer mode (reduced communication)      |enum    |0 - Normal operation                                                  |
+|        |                                                  |        |1 - Summer mode with 8h radio duty cycle                              |
+|SPS     |Set point selection for DB3                       |enum    |0 - Valve position mode                                               |
+|        |                                                  |        |1 - Temperature set point                                             |
+|TSL     |Temperature requested from the actuator           |enum    |0 - Request ambient temperature                                       |
+|        |                                                  |        |1 - Request feed temperature                                          |
+|SBY     |Enter standby mode, refer to Appendix             |enum    |0 - Normal operation                                                  |
+|        |                                                  |        |1 - Standby                                                           |
+
+</blockquote></details>
+
 </blockquote></details>
 
 <details open><summary>30 <i>(Digital Input)</i></summary><blockquote>
-<details><summary>A5-30-03 <i>(Digital Inputs, Wake and Temperature)</i></summary><blockquote>
+<details><summary>A5-30-03 <i>(4 Digital Inputs, Wake and Temperature)</i></summary><blockquote>
 
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
@@ -1014,6 +1085,20 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1 - High                                                              |
 |DI3     |Digital Input 3                                   |enum    |0 - Low                                                               |
 |        |                                                  |        |1 - High                                                              |
+|DI2     |Digital Input 2                                   |enum    |0 - Low                                                               |
+|        |                                                  |        |1 - High                                                              |
+|DI1     |Digital Input 1                                   |enum    |0 - Low                                                               |
+|        |                                                  |        |1 - High                                                              |
+|DI0     |Digital Input 0                                   |enum    |0 - Low                                                               |
+|        |                                                  |        |1 - High                                                              |
+
+</blockquote></details>
+
+<details><summary>A5-30-04 <i>(3 Digital Inputs, 1 Digital Input 8 bits)</i></summary><blockquote>
+
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|DV0     |Digital Value 1 byte                              |value   |0.0-255.0 ↔ 0.0-255.0                                                 |
 |DI2     |Digital Input 2                                   |enum    |0 - Low                                                               |
 |        |                                                  |        |1 - High                                                              |
 |DI1     |Digital Input 1                                   |enum    |0 - Low                                                               |
@@ -1057,10 +1142,41 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 
 </blockquote></details>
 
+<details open><summary>3F <i>(Universal)</i></summary><blockquote>
+<details><summary>A5-3F-7F <i>(Universal)</i></summary><blockquote>
+
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|DB3     |Data Byte 3                                       |value   |0.0-255.0 ↔ 0.0-255.0                                                 |
+|DB2     |Data Byte 2                                       |value   |0.0-255.0 ↔ 0.0-255.0                                                 |
+|DB1     |Data Byte 1                                       |value   |0.0-255.0 ↔ 0.0-255.0                                                 |
+|DB0     |Data Byte 0                                       |value   |0.0-255.0 ↔ 0.0-255.0                                                 |
+
+</blockquote></details>
+
+</blockquote></details>
+
 </blockquote></details>
 <details open><summary>D2 <i>(VLD Telegram)</i></summary><blockquote>
 <details open><summary>01 <i>(Electronic switches and dimmers with Energy Measurement and Local Control)</i></summary><blockquote>
 <details><summary>D2-01-01 <i>(Electronic switch with Local Control)</i></summary><blockquote>
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
+|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
+|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
+|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
+|        |                                                  |        |4 - Stop dimming                                                      |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
 
 ###### command: 4
 |shortcut|description                                       |type    |values                                                                |
@@ -1086,6 +1202,10 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |101-126 - Not used                                                    |
 |        |                                                  |        |127 - output value not valid / not set                                |
 
+</blockquote></details>
+
+<details><summary>D2-01-09 <i>(Type 0x09)</i></summary><blockquote>
+
 ###### command: 1
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
@@ -1102,10 +1222,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1-100 - Output value {value}% or ON                                   |
 |        |                                                  |        |101-126 - Not used                                                    |
 |        |                                                  |        |127 - output value not valid / not set                                |
-
-</blockquote></details>
-
-<details><summary>D2-01-0A <i>(Smart Plug module, no metering capabilities)</i></summary><blockquote>
 
 ###### command: 3
 |shortcut|description                                       |type    |values                                                                |
@@ -1123,100 +1239,17 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
 |        |                                                  |        |1 - Power Failure Detection Detected                                  |
 |CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
 |IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
 |        |                                                  |        |30 - Not applicable, do not use                                       |
 |        |                                                  |        |31 - Input channel (from mains supply)                                |
 |LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
 |        |                                                  |        |1 - Local control enabled                                             |
-|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
-|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
-|        |                                                  |        |101-126 - Not used                                                    |
-|        |                                                  |        |127 - output value not valid / not set                                |
-
-###### command: 1
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
-|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
-|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
-|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
-|        |                                                  |        |4 - Stop dimming                                                      |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
-|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
-|        |                                                  |        |101-126 - Not used                                                    |
-|        |                                                  |        |127 - output value not valid / not set                                |
-
-</blockquote></details>
-
-<details><summary>D2-01-0B <i>(Smart Plug module with Energy Measurement)</i></summary><blockquote>
-
-###### command: 6
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|qu      |Query                                             |enum    |0 - Query energy                                                      |
-|        |                                                  |        |1 - Query power                                                       |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-
-###### command: 7
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
-|        |                                                  |        |1 - Energy [Wh]                                                       |
-|        |                                                  |        |2 - Energy [KWh]                                                      |
-|        |                                                  |        |3 - Power [W]                                                         |
-|        |                                                  |        |4 - Power [KW]                                                        |
-|        |                                                  |        |5-7 - Not used                                                        |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - Not applicable, do not use                                       |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|MV      |Measurement value                                 |enum    |0-4294967295 - Measurement value {value}                              |
-
-###### command: 3
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-
-###### command: 4
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
-|        |                                                  |        |1 - Power Failure Detection enabled                                   |
-|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
-|        |                                                  |        |1 - Power Failure Detection Detected                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - Not applicable, do not use                                       |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
-|        |                                                  |        |1 - Local control enabled                                             |
-|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
-|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
-|        |                                                  |        |101-126 - Not used                                                    |
-|        |                                                  |        |127 - output value not valid / not set                                |
-
-###### command: 1
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
-|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
-|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
-|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
-|        |                                                  |        |4 - Stop dimming                                                      |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
 |OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
 |        |                                                  |        |1-100 - Output value {value}% or ON                                   |
 |        |                                                  |        |101-126 - Not used                                                    |
@@ -1248,22 +1281,293 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |MIT     |Min message time                                  |enum    |0 - Reserved                                                          |
 |        |                                                  |        |1-255 - Min message time {value}                                      |
 
+###### command: 6
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|qu      |Query                                             |enum    |0 - Query energy                                                      |
+|        |                                                  |        |1 - Query power                                                       |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 7
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
+|        |                                                  |        |1 - Energy [Wh]                                                       |
+|        |                                                  |        |2 - Energy [KWh]                                                      |
+|        |                                                  |        |3 - Power [W]                                                         |
+|        |                                                  |        |4 - Power [KW]                                                        |
+|        |                                                  |        |5-7 - Not used                                                        |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|MV      |Measurement value                                 |enum    |0-4294967295 - Measurement value {value}                              |
+
+</blockquote></details>
+
+<details><summary>D2-01-0A <i>(Smart Plug module, no metering capabilities)</i></summary><blockquote>
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
+|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
+|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
+|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
+|        |                                                  |        |4 - Stop dimming                                                      |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+</blockquote></details>
+
+<details><summary>D2-01-0B <i>(Smart Plug module with Energy Measurement)</i></summary><blockquote>
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
+|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
+|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
+|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
+|        |                                                  |        |4 - Stop dimming                                                      |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 5
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|RM      |Report measurement                                |enum    |0 - Query only                                                        |
+|        |                                                  |        |1 - Query / auto                                                      |
+|RE      |Reset measurement                                 |enum    |0 - Not active                                                        |
+|        |                                                  |        |1 - Trigger signal                                                    |
+|ep      |Measurement mode                                  |enum    |0 - Energy                                                            |
+|        |                                                  |        |1 - Power                                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|MD_LSB  |Measurement delta LSB                             |enum    |0-15 - Measurement delta LSB {value}                                  |
+|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
+|        |                                                  |        |1 - Energy [Wh]                                                       |
+|        |                                                  |        |2 - Energy [KWh]                                                      |
+|        |                                                  |        |3 - Power [W]                                                         |
+|        |                                                  |        |4 - Power [KW]                                                        |
+|        |                                                  |        |5-7 - Not used                                                        |
+|MD_MSB  |Measurement delta MSB                             |enum    |0-255 - Measurement delta MSB {value}                                 |
+|MAT     |Max message time                                  |enum    |0 - Reserved                                                          |
+|        |                                                  |        |1-255 - Max message time {value}                                      |
+|MIT     |Min message time                                  |enum    |0 - Reserved                                                          |
+|        |                                                  |        |1-255 - Min message time {value}                                      |
+
+###### command: 6
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|qu      |Query                                             |enum    |0 - Query energy                                                      |
+|        |                                                  |        |1 - Query power                                                       |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 7
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
+|        |                                                  |        |1 - Energy [Wh]                                                       |
+|        |                                                  |        |2 - Energy [KWh]                                                      |
+|        |                                                  |        |3 - Power [W]                                                         |
+|        |                                                  |        |4 - Power [KW]                                                        |
+|        |                                                  |        |5-7 - Not used                                                        |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|MV      |Measurement value                                 |enum    |0-4294967295 - Measurement value {value}                              |
+
 </blockquote></details>
 
 <details><summary>D2-01-0C <i>(Heating module with Pilotwire command and Energy Measurement)</i></summary><blockquote>
 
-###### command: 8
+###### command: 1
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|PM      |Pilotwire mode                                    |enum    |0 - Off                                                               |
-|        |                                                  |        |1 - Comfort                                                           |
-|        |                                                  |        |2 - Eco                                                               |
-|        |                                                  |        |3 - Anti-freeze                                                       |
-|        |                                                  |        |4 - Comfort-1                                                         |
-|        |                                                  |        |5 - Comfort-2                                                         |
+|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
+|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
+|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
+|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
+|        |                                                  |        |4 - Stop dimming                                                      |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
 
-###### command: 10
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 5
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|RM      |Report measurement                                |enum    |0 - Query only                                                        |
+|        |                                                  |        |1 - Query / auto                                                      |
+|RE      |Reset measurement                                 |enum    |0 - Not active                                                        |
+|        |                                                  |        |1 - Trigger signal                                                    |
+|ep      |Measurement mode                                  |enum    |0 - Energy                                                            |
+|        |                                                  |        |1 - Power                                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|MD_LSB  |Measurement delta LSB                             |enum    |0-15 - Measurement delta LSB {value}                                  |
+|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
+|        |                                                  |        |1 - Energy [Wh]                                                       |
+|        |                                                  |        |2 - Energy [KWh]                                                      |
+|        |                                                  |        |3 - Power [W]                                                         |
+|        |                                                  |        |4 - Power [KW]                                                        |
+|        |                                                  |        |5-7 - Not used                                                        |
+|MD_MSB  |Measurement delta MSB                             |enum    |0-255 - Measurement delta MSB {value}                                 |
+|MAT     |Max message time                                  |enum    |0 - Reserved                                                          |
+|        |                                                  |        |1-255 - Max message time {value}                                      |
+|MIT     |Min message time                                  |enum    |0 - Reserved                                                          |
+|        |                                                  |        |1-255 - Min message time {value}                                      |
+
+###### command: 6
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|qu      |Query                                             |enum    |0 - Query energy                                                      |
+|        |                                                  |        |1 - Query power                                                       |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 7
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
+|        |                                                  |        |1 - Energy [Wh]                                                       |
+|        |                                                  |        |2 - Energy [KWh]                                                      |
+|        |                                                  |        |3 - Power [W]                                                         |
+|        |                                                  |        |4 - Power [KW]                                                        |
+|        |                                                  |        |5-7 - Not used                                                        |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|MV      |Measurement value                                 |enum    |0-4294967295 - Measurement value {value}                              |
+
+###### command: 8
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
@@ -1279,30 +1583,37 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |--------|--------------------------------------------------|--------|----                                                                  |
 |CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
 
-###### command: 6
+###### command: 10
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|qu      |Query                                             |enum    |0 - Query energy                                                      |
-|        |                                                  |        |1 - Query power                                                       |
+|PM      |Pilotwire mode                                    |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Comfort                                                           |
+|        |                                                  |        |2 - Eco                                                               |
+|        |                                                  |        |3 - Anti-freeze                                                       |
+|        |                                                  |        |4 - Comfort-1                                                         |
+|        |                                                  |        |5 - Comfort-2                                                         |
+
+</blockquote></details>
+
+<details><summary>D2-01-0D <i>(Micro Smart Plug module with 1 channel, no metering capabilities)</i></summary><blockquote>
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
+|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
+|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
+|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
+|        |                                                  |        |4 - Stop dimming                                                      |
 |IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
 |        |                                                  |        |30 - All output channels supported by the device                      |
 |        |                                                  |        |31 - Input channel (from mains supply)                                |
-
-###### command: 7
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
-|        |                                                  |        |1 - Energy [Wh]                                                       |
-|        |                                                  |        |2 - Energy [KWh]                                                      |
-|        |                                                  |        |3 - Power [W]                                                         |
-|        |                                                  |        |4 - Power [KW]                                                        |
-|        |                                                  |        |5-7 - Not used                                                        |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - Not applicable, do not use                                       |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|MV      |Measurement value                                 |enum    |0-4294967295 - Measurement value {value}                              |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
 
 ###### command: 3
 |shortcut|description                                       |type    |values                                                                |
@@ -1315,6 +1626,10 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 ###### command: 4
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
 |CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
 |OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
 |        |                                                  |        |1 - Over current switch off: executed                                 |
@@ -1332,6 +1647,10 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |101-126 - Not used                                                    |
 |        |                                                  |        |127 - output value not valid / not set                                |
 
+</blockquote></details>
+
+<details><summary>D2-01-0E <i>(Micro Smart Plug module with 1 channel, and metering capabilities)</i></summary><blockquote>
+
 ###### command: 1
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
@@ -1344,6 +1663,38 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
 |        |                                                  |        |30 - All output channels supported by the device                      |
 |        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
 |OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
 |        |                                                  |        |1-100 - Output value {value}% or ON                                   |
 |        |                                                  |        |101-126 - Not used                                                    |
@@ -1374,53 +1725,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1-255 - Max message time {value}                                      |
 |MIT     |Min message time                                  |enum    |0 - Reserved                                                          |
 |        |                                                  |        |1-255 - Min message time {value}                                      |
-
-</blockquote></details>
-
-<details><summary>D2-01-0D <i>(Micro Smart Plug module with 1 channel, no metering capabilities)</i></summary><blockquote>
-
-###### command: 3
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-
-###### command: 4
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - Not applicable, do not use                                       |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
-|        |                                                  |        |1 - Local control enabled                                             |
-|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
-|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
-|        |                                                  |        |101-126 - Not used                                                    |
-|        |                                                  |        |127 - output value not valid / not set                                |
-
-###### command: 1
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
-|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
-|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
-|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
-|        |                                                  |        |4 - Stop dimming                                                      |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
-|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
-|        |                                                  |        |101-126 - Not used                                                    |
-|        |                                                  |        |127 - output value not valid / not set                                |
-
-</blockquote></details>
-
-<details><summary>D2-01-0E <i>(Micro Smart Plug module with 1 channel, and metering capabilities)</i></summary><blockquote>
 
 ###### command: 6
 |shortcut|description                                       |type    |values                                                                |
@@ -1447,99 +1751,10 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |31 - Input channel (from mains supply)                                |
 |MV      |Measurement value                                 |enum    |0-4294967295 - Measurement value {value}                              |
 
-###### command: 3
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-
-###### command: 4
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
-|        |                                                  |        |1 - Over current switch off: executed                                 |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - Not applicable, do not use                                       |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
-|        |                                                  |        |1 - Local control enabled                                             |
-|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
-|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
-|        |                                                  |        |101-126 - Not used                                                    |
-|        |                                                  |        |127 - output value not valid / not set                                |
-
-###### command: 1
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|DV      |Dim value                                         |enum    |0 - Switch to new output value                                        |
-|        |                                                  |        |1 - Dim to new output level - dim timer 1                             |
-|        |                                                  |        |2 - Dim to new output level - dim timer 2                             |
-|        |                                                  |        |3 - Dim to new output level - dim timer 3                             |
-|        |                                                  |        |4 - Stop dimming                                                      |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
-|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
-|        |                                                  |        |101-126 - Not used                                                    |
-|        |                                                  |        |127 - output value not valid / not set                                |
-
-###### command: 5
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|RM      |Report measurement                                |enum    |0 - Query only                                                        |
-|        |                                                  |        |1 - Query / auto                                                      |
-|RE      |Reset measurement                                 |enum    |0 - Not active                                                        |
-|        |                                                  |        |1 - Trigger signal                                                    |
-|ep      |Measurement mode                                  |enum    |0 - Energy                                                            |
-|        |                                                  |        |1 - Power                                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - Not applicable, do not use                                       |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|MD_LSB  |Measurement delta LSB                             |enum    |0-15 - Measurement delta LSB {value}                                  |
-|UN      |Unit                                              |enum    |0 - Energy [Ws]                                                       |
-|        |                                                  |        |1 - Energy [Wh]                                                       |
-|        |                                                  |        |2 - Energy [KWh]                                                      |
-|        |                                                  |        |3 - Power [W]                                                         |
-|        |                                                  |        |4 - Power [KW]                                                        |
-|        |                                                  |        |5-7 - Not used                                                        |
-|MD_MSB  |Measurement delta MSB                             |enum    |0-255 - Measurement delta MSB {value}                                 |
-|MAT     |Max message time                                  |enum    |0 - Reserved                                                          |
-|        |                                                  |        |1-255 - Max message time {value}                                      |
-|MIT     |Min message time                                  |enum    |0 - Reserved                                                          |
-|        |                                                  |        |1-255 - Min message time {value}                                      |
-
 </blockquote></details>
 
 <details><summary>D2-01-0F <i>(Slot-in Module with 1 channel, no metering capabilities)</i></summary><blockquote>
 
-###### command: 3
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-
-###### command: 4
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - Not applicable, do not use                                       |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
-|        |                                                  |        |1 - Local control enabled                                             |
-|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
-|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
-|        |                                                  |        |101-126 - Not used                                                    |
-|        |                                                  |        |127 - output value not valid / not set                                |
-
 ###### command: 1
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
@@ -1552,6 +1767,38 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
 |        |                                                  |        |30 - All output channels supported by the device                      |
 |        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
 |OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
 |        |                                                  |        |1-100 - Output value {value}% or ON                                   |
 |        |                                                  |        |101-126 - Not used                                                    |
@@ -1561,28 +1808,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 
 <details><summary>D2-01-12 <i>(Slot-in Module with 2 channels, no metering capabilities)</i></summary><blockquote>
 
-###### command: 3
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - All output channels supported by the device                      |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-
-###### command: 4
-|shortcut|description                                       |type    |values                                                                |
-|--------|--------------------------------------------------|--------|----                                                                  |
-|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
-|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
-|        |                                                  |        |30 - Not applicable, do not use                                       |
-|        |                                                  |        |31 - Input channel (from mains supply)                                |
-|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
-|        |                                                  |        |1 - Local control enabled                                             |
-|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
-|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
-|        |                                                  |        |101-126 - Not used                                                    |
-|        |                                                  |        |127 - output value not valid / not set                                |
-
 ###### command: 1
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
@@ -1595,6 +1820,38 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
 |        |                                                  |        |30 - All output channels supported by the device                      |
 |        |                                                  |        |31 - Input channel (from mains supply)                                |
+|OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
+|        |                                                  |        |1-100 - Output value {value}% or ON                                   |
+|        |                                                  |        |101-126 - Not used                                                    |
+|        |                                                  |        |127 - output value not valid / not set                                |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - All output channels supported by the device                      |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+
+###### command: 4
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|PF      |Power Failure                                     |enum    |0 - Power Failure Detection disabled/not supported                    |
+|        |                                                  |        |1 - Power Failure Detection enabled                                   |
+|PFD     |Power Failure Detection                           |enum    |0 - Power Failure Detection not detected/not supported/disabled       |
+|        |                                                  |        |1 - Power Failure Detection Detected                                  |
+|CMD     |Command identifier                                |enum    |0-13 - Command ID {value}                                             |
+|OC      |Over current switch off                           |enum    |0 - Over current switch off: ready / not supported                    |
+|        |                                                  |        |1 - Over current switch off: executed                                 |
+|EL      |Error level                                       |enum    |0 - Error level 0: hardware OK                                        |
+|        |                                                  |        |1 - Error level 1: hardware warning                                   |
+|        |                                                  |        |2 - Error level 2: hardware failure                                   |
+|        |                                                  |        |3 - Error level not supported                                         |
+|IO      |I/O channel                                       |enum    |0-29 - Output channel {value} (to load)                               |
+|        |                                                  |        |30 - Not applicable, do not use                                       |
+|        |                                                  |        |31 - Input channel (from mains supply)                                |
+|LC      |Local control                                     |enum    |0 - Local control disabled / not supported                            |
+|        |                                                  |        |1 - Local control enabled                                             |
 |OV      |Output value                                      |enum    |0 - Output value 0% or OFF                                            |
 |        |                                                  |        |1-100 - Output value {value}% or ON                                   |
 |        |                                                  |        |101-126 - Not used                                                    |
@@ -1699,6 +1956,473 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |ACZ     |Absolute Acceleration on Z axis                   |value   |0.0-1000.0 ↔ -2.5-2.5 g                                               |
 |CO      |Contact                                           |enum    |0 - Open                                                              |
 |        |                                                  |        |1 - Closed                                                            |
+
+</blockquote></details>
+
+</blockquote></details>
+
+<details open><summary>50 <i>(Heat Recovery Ventilation)</i></summary><blockquote>
+<details><summary>D2-50-00 <i>(Type 0x00 (single room ventilation unit))</i></summary><blockquote>
+
+###### command: 0
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|RMT     |Requested Message Type                            |enum    |0 - Ventilation basic status                                          |
+|        |                                                  |        |1 - Ventilation extended status                                       |
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|DOMC    |Direct Operation Mode Control                     |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Level 1                                                           |
+|        |                                                  |        |2 - Level 2                                                           |
+|        |                                                  |        |3 - Level 3                                                           |
+|        |                                                  |        |4 - Level 4                                                           |
+|        |                                                  |        |5-10 - Reserved                                                       |
+|        |                                                  |        |11 - Automatic                                                        |
+|        |                                                  |        |12 - Automatic on demand                                              |
+|        |                                                  |        |13 - Supply air only                                                  |
+|        |                                                  |        |14 - Exhaust air only                                                 |
+|        |                                                  |        |15 - No action (keep current ventilation mode/level)                  |
+|OMC     |Operation Mode Control                            |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Select next operation mode (edge-trigger)                         |
+|        |                                                  |        |2 - Select previous operation mode (edge-trigger)                     |
+|        |                                                  |        |3 - Reserved                                                          |
+|HBC     |Heat Exchanger Bypass Control                     |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Close bypass (edge-trigger)                                       |
+|        |                                                  |        |2 - Open bypass (edge-trigger)                                        |
+|        |                                                  |        |3 - Reserved                                                          |
+|TOMC    |Timer Operation Mode Control                      |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Start timer operation mode (edge-trigger)                         |
+|COT     |CO2 Threshold                                     |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|HT      |Humidity Threshold                                |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|AQT     |Air Quality Threshold                             |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|RTT     |Room temperature threshold                        |value   |1.0-127.0 ↔ -63.0-63.0 °C                                             |
+
+###### command: 2
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|OMS     |Operation Mode Status                             |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Level 1                                                           |
+|        |                                                  |        |2 - Level 2                                                           |
+|        |                                                  |        |3 - Level 3                                                           |
+|        |                                                  |        |4 - Level 4                                                           |
+|        |                                                  |        |5-10 - Reserved                                                       |
+|        |                                                  |        |11 - Automatic                                                        |
+|        |                                                  |        |12 - Automatic on demand                                              |
+|        |                                                  |        |13 - Supply air only                                                  |
+|        |                                                  |        |14 - Exhaust air only                                                 |
+|        |                                                  |        |15 - Reserved                                                         |
+|SMS     |Safety Mode Status                                |enum    |0 - Fireplace safety mode disabled                                    |
+|        |                                                  |        |1 - Fireplace safety mode enabled                                     |
+|HBS     |Heat Exchanger Bypass Status                      |enum    |0 - Bypass closed (heat-recovery active)                              |
+|        |                                                  |        |1 - Bypass opened (heat-recovery inactive)                            |
+|SFP     |Supply Air Flap Position                          |enum    |0 - Supply air flap closed                                            |
+|        |                                                  |        |1 - Supply air flap opened                                            |
+|EFP     |Exhaust Air Flap Position                         |enum    |0 - Exhaust air flap closed                                           |
+|        |                                                  |        |1 - Exhaust air flap opened                                           |
+|DMS     |Defrost Mode Status                               |enum    |0 - Defrost mode inactive                                             |
+|        |                                                  |        |1 - Defrost mode active                                               |
+|CPS     |Cooling Protection Status                         |enum    |0 - Cooling protection mode inactive                                  |
+|        |                                                  |        |1 - Cooling protection mode active                                    |
+|OHS     |Outdoor Air Heater Status                         |enum    |0 - Cooling protection mode inactive                                  |
+|        |                                                  |        |1 - Cooling protection mode active                                    |
+|SHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
+|        |                                                  |        |1 - Active                                                            |
+|DHS     |Drain Heater Status                               |enum    |0 - Inactive                                                          |
+|        |                                                  |        |1 - Active                                                            |
+|TOMS    |Timer Operation Mode Status                       |enum    |0 - timer operation mode inactive                                     |
+|        |                                                  |        |1 - timer operation mode active                                       |
+|FMS     |Filter Maintenance Status                         |enum    |0 - Maintenance not required                                          |
+|        |                                                  |        |1 - Maintenance required                                              |
+|WTPS    |Weekly Timer Program Status                       |enum    |0 - Weekly timer program disabled or not configured                   |
+|        |                                                  |        |1 - Weekly timer program active                                       |
+|RTCS    |Room Temperature Control Status                   |enum    |0 - Room temperature control inactive                                 |
+|        |                                                  |        |1 - Room temperature control active                                   |
+|AQS1    |Air Quality Sensor 1                              |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Not available                                                   |
+|MSS     |Master/Slave Configuration Status                 |enum    |0 - Master                                                            |
+|        |                                                  |        |1 - Slave                                                             |
+|AQS2    |Air Quality Sensor 2                              |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Not available                                                   |
+|OUTT    |Outdoor Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|SPLYT   |Supply Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|INT     |Indoor Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|EXHT    |Exhaust Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|SPLYFF  |Supply Air Fan Air Flow Rate                      |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
+|EXHFF   |Exhaust Air Fan Air Flow Rate                     |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
+|SPLYFS  |Supply Fan Speed                                  |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
+|EXHFS   |Exhaust Fan Speed                                 |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|SVI     |Software Version Info                             |value   |0.0-4095.0 ↔ 0.0-4095.0                                               |
+|OHC     |Operation Hours Counter                           |value   |0.0-65535.0 ↔ 0.0-196605.0                                            |
+|DIS     |Digital Input 0...15 Status                       |enum    |1-32768 - {value}                                                     |
+|DOS     |Digital Output 0...15 Status                      |enum    |1-32768 - {value}                                                     |
+|IMS     |Info Message 0...15 Status                        |enum    |1-32768 - {value}                                                     |
+|FS      |Fault 0...31 Status                               |enum    |1-2147483648 - {value}                                                |
+
+</blockquote></details>
+
+<details><summary>D2-50-01 <i>(Type 0x01 (single room ventilation unit with pre-heater))</i></summary><blockquote>
+
+###### command: 0
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|RMT     |Requested Message Type                            |enum    |0 - Ventilation basic status                                          |
+|        |                                                  |        |1 - Ventilation extended status                                       |
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|DOMC    |Direct Operation Mode Control                     |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Level 1                                                           |
+|        |                                                  |        |2 - Level 2                                                           |
+|        |                                                  |        |3 - Level 3                                                           |
+|        |                                                  |        |4 - Level 4                                                           |
+|        |                                                  |        |5-10 - Reserved                                                       |
+|        |                                                  |        |11 - Automatic                                                        |
+|        |                                                  |        |12 - Automatic on demand                                              |
+|        |                                                  |        |13 - Supply air only                                                  |
+|        |                                                  |        |14 - Exhaust air only                                                 |
+|        |                                                  |        |15 - No action (keep current ventilation mode/level)                  |
+|OMC     |Operation Mode Control                            |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Select next operation mode (edge-trigger)                         |
+|        |                                                  |        |2 - Select previous operation mode (edge-trigger)                     |
+|        |                                                  |        |3 - Reserved                                                          |
+|HBC     |Heat Exchanger Bypass Control                     |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Close bypass (edge-trigger)                                       |
+|        |                                                  |        |2 - Open bypass (edge-trigger)                                        |
+|        |                                                  |        |3 - Reserved                                                          |
+|TOMC    |Timer Operation Mode Control                      |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Start timer operation mode (edge-trigger)                         |
+|COT     |CO2 Threshold                                     |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|HT      |Humidity Threshold                                |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|AQT     |Air Quality Threshold                             |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|RTT     |Room temperature threshold                        |value   |1.0-127.0 ↔ -63.0-63.0 °C                                             |
+
+###### command: 2
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|OMS     |Operation Mode Status                             |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Level 1                                                           |
+|        |                                                  |        |2 - Level 2                                                           |
+|        |                                                  |        |3 - Level 3                                                           |
+|        |                                                  |        |4 - Level 4                                                           |
+|        |                                                  |        |5-10 - Reserved                                                       |
+|        |                                                  |        |11 - Automatic                                                        |
+|        |                                                  |        |12 - Automatic on demand                                              |
+|        |                                                  |        |13 - Supply air only                                                  |
+|        |                                                  |        |14 - Exhaust air only                                                 |
+|        |                                                  |        |15 - Reserved                                                         |
+|SMS     |Safety Mode Status                                |enum    |0 - Fireplace safety mode disabled                                    |
+|        |                                                  |        |1 - Fireplace safety mode enabled                                     |
+|HBS     |Heat Exchanger Bypass Status                      |enum    |0 - Bypass closed (heat-recovery active)                              |
+|        |                                                  |        |1 - Bypass opened (heat-recovery inactive)                            |
+|SFP     |Supply Air Flap Position                          |enum    |0 - Supply air flap closed                                            |
+|        |                                                  |        |1 - Supply air flap opened                                            |
+|EFP     |Exhaust Air Flap Position                         |enum    |0 - Exhaust air flap closed                                           |
+|        |                                                  |        |1 - Exhaust air flap opened                                           |
+|DMS     |Defrost Mode Status                               |enum    |0 - Defrost mode inactive                                             |
+|        |                                                  |        |1 - Defrost mode active                                               |
+|CPS     |Cooling Protection Status                         |enum    |0 - Cooling protection mode inactive                                  |
+|        |                                                  |        |1 - Cooling protection mode active                                    |
+|OHS     |Outdoor Air Heater Status                         |enum    |0 - Cooling protection mode inactive                                  |
+|        |                                                  |        |1 - Cooling protection mode active                                    |
+|SHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
+|        |                                                  |        |1 - Active                                                            |
+|DHS     |Drain Heater Status                               |enum    |0 - Inactive                                                          |
+|        |                                                  |        |1 - Active                                                            |
+|TOMS    |Timer Operation Mode Status                       |enum    |0 - timer operation mode inactive                                     |
+|        |                                                  |        |1 - timer operation mode active                                       |
+|FMS     |Filter Maintenance Status                         |enum    |0 - Maintenance not required                                          |
+|        |                                                  |        |1 - Maintenance required                                              |
+|WTPS    |Weekly Timer Program Status                       |enum    |0 - Weekly timer program disabled or not configured                   |
+|        |                                                  |        |1 - Weekly timer program active                                       |
+|RTCS    |Room Temperature Control Status                   |enum    |0 - Room temperature control inactive                                 |
+|        |                                                  |        |1 - Room temperature control active                                   |
+|AQS1    |Air Quality Sensor 1                              |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Not available                                                   |
+|MSS     |Master/Slave Configuration Status                 |enum    |0 - Master                                                            |
+|        |                                                  |        |1 - Slave                                                             |
+|AQS2    |Air Quality Sensor 2                              |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Not available                                                   |
+|OUTT    |Outdoor Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|SPLYT   |Supply Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|INT     |Indoor Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|EXHT    |Exhaust Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|SPLYFF  |Supply Air Fan Air Flow Rate                      |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
+|EXHFF   |Exhaust Air Fan Air Flow Rate                     |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
+|SPLYFS  |Supply Fan Speed                                  |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
+|EXHFS   |Exhaust Fan Speed                                 |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|SVI     |Software Version Info                             |value   |0.0-4095.0 ↔ 0.0-4095.0                                               |
+|OHC     |Operation Hours Counter                           |value   |0.0-65535.0 ↔ 0.0-196605.0                                            |
+|DIS     |Digital Input 0...15 Status                       |enum    |1-32768 - {value}                                                     |
+|DOS     |Digital Output 0...15 Status                      |enum    |1-32768 - {value}                                                     |
+|IMS     |Info Message 0...15 Status                        |enum    |1-32768 - {value}                                                     |
+|FS      |Fault 0...31 Status                               |enum    |1-2147483648 - {value}                                                |
+
+</blockquote></details>
+
+<details><summary>D2-50-10 <i>(Type 0x10 (multi room ventilation unit without bypass))</i></summary><blockquote>
+
+###### command: 0
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|RMT     |Requested Message Type                            |enum    |0 - Ventilation basic status                                          |
+|        |                                                  |        |1 - Ventilation extended status                                       |
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|DOMC    |Direct Operation Mode Control                     |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Level 1                                                           |
+|        |                                                  |        |2 - Level 2                                                           |
+|        |                                                  |        |3 - Level 3                                                           |
+|        |                                                  |        |4 - Level 4                                                           |
+|        |                                                  |        |5-10 - Reserved                                                       |
+|        |                                                  |        |11 - Automatic                                                        |
+|        |                                                  |        |12 - Automatic on demand                                              |
+|        |                                                  |        |13 - Supply air only                                                  |
+|        |                                                  |        |14 - Exhaust air only                                                 |
+|        |                                                  |        |15 - No action (keep current ventilation mode/level)                  |
+|OMC     |Operation Mode Control                            |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Select next operation mode (edge-trigger)                         |
+|        |                                                  |        |2 - Select previous operation mode (edge-trigger)                     |
+|        |                                                  |        |3 - Reserved                                                          |
+|HBC     |Heat Exchanger Bypass Control                     |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Close bypass (edge-trigger)                                       |
+|        |                                                  |        |2 - Open bypass (edge-trigger)                                        |
+|        |                                                  |        |3 - Reserved                                                          |
+|TOMC    |Timer Operation Mode Control                      |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Start timer operation mode (edge-trigger)                         |
+|COT     |CO2 Threshold                                     |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|HT      |Humidity Threshold                                |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|AQT     |Air Quality Threshold                             |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|RTT     |Room temperature threshold                        |value   |1.0-127.0 ↔ -63.0-63.0 °C                                             |
+
+###### command: 2
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|OMS     |Operation Mode Status                             |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Level 1                                                           |
+|        |                                                  |        |2 - Level 2                                                           |
+|        |                                                  |        |3 - Level 3                                                           |
+|        |                                                  |        |4 - Level 4                                                           |
+|        |                                                  |        |5-10 - Reserved                                                       |
+|        |                                                  |        |11 - Automatic                                                        |
+|        |                                                  |        |12 - Automatic on demand                                              |
+|        |                                                  |        |13 - Supply air only                                                  |
+|        |                                                  |        |14 - Exhaust air only                                                 |
+|        |                                                  |        |15 - Reserved                                                         |
+|SMS     |Safety Mode Status                                |enum    |0 - Fireplace safety mode disabled                                    |
+|        |                                                  |        |1 - Fireplace safety mode enabled                                     |
+|HBS     |Heat Exchanger Bypass Status                      |enum    |0 - Bypass closed (heat-recovery active)                              |
+|        |                                                  |        |1 - Bypass opened (heat-recovery inactive)                            |
+|SFP     |Supply Air Flap Position                          |enum    |0 - Supply air flap closed                                            |
+|        |                                                  |        |1 - Supply air flap opened                                            |
+|EFP     |Exhaust Air Flap Position                         |enum    |0 - Exhaust air flap closed                                           |
+|        |                                                  |        |1 - Exhaust air flap opened                                           |
+|DMS     |Defrost Mode Status                               |enum    |0 - Defrost mode inactive                                             |
+|        |                                                  |        |1 - Defrost mode active                                               |
+|CPS     |Cooling Protection Status                         |enum    |0 - Cooling protection mode inactive                                  |
+|        |                                                  |        |1 - Cooling protection mode active                                    |
+|OHS     |Outdoor Air Heater Status                         |enum    |0 - Cooling protection mode inactive                                  |
+|        |                                                  |        |1 - Cooling protection mode active                                    |
+|SHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
+|        |                                                  |        |1 - Active                                                            |
+|DHS     |Drain Heater Status                               |enum    |0 - Inactive                                                          |
+|        |                                                  |        |1 - Active                                                            |
+|TOMS    |Timer Operation Mode Status                       |enum    |0 - timer operation mode inactive                                     |
+|        |                                                  |        |1 - timer operation mode active                                       |
+|FMS     |Filter Maintenance Status                         |enum    |0 - Maintenance not required                                          |
+|        |                                                  |        |1 - Maintenance required                                              |
+|WTPS    |Weekly Timer Program Status                       |enum    |0 - Weekly timer program disabled or not configured                   |
+|        |                                                  |        |1 - Weekly timer program active                                       |
+|RTCS    |Room Temperature Control Status                   |enum    |0 - Room temperature control inactive                                 |
+|        |                                                  |        |1 - Room temperature control active                                   |
+|AQS1    |Air Quality Sensor 1                              |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Not available                                                   |
+|MSS     |Master/Slave Configuration Status                 |enum    |0 - Master                                                            |
+|        |                                                  |        |1 - Slave                                                             |
+|AQS2    |Air Quality Sensor 2                              |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Not available                                                   |
+|OUTT    |Outdoor Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|SPLYT   |Supply Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|INT     |Indoor Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|EXHT    |Exhaust Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|SPLYFF  |Supply Air Fan Air Flow Rate                      |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
+|EXHFF   |Exhaust Air Fan Air Flow Rate                     |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
+|SPLYFS  |Supply Fan Speed                                  |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
+|EXHFS   |Exhaust Fan Speed                                 |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|SVI     |Software Version Info                             |value   |0.0-4095.0 ↔ 0.0-4095.0                                               |
+|OHC     |Operation Hours Counter                           |value   |0.0-65535.0 ↔ 0.0-196605.0                                            |
+|DIS     |Digital Input 0...15 Status                       |enum    |1-32768 - {value}                                                     |
+|DOS     |Digital Output 0...15 Status                      |enum    |1-32768 - {value}                                                     |
+|IMS     |Info Message 0...15 Status                        |enum    |1-32768 - {value}                                                     |
+|FS      |Fault 0...31 Status                               |enum    |1-2147483648 - {value}                                                |
+
+</blockquote></details>
+
+<details><summary>D2-50-11 <i>(Type 0x11 (multi room ventilation unit with bypass))</i></summary><blockquote>
+
+###### command: 0
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|RMT     |Requested Message Type                            |enum    |0 - Ventilation basic status                                          |
+|        |                                                  |        |1 - Ventilation extended status                                       |
+
+###### command: 1
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|DOMC    |Direct Operation Mode Control                     |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Level 1                                                           |
+|        |                                                  |        |2 - Level 2                                                           |
+|        |                                                  |        |3 - Level 3                                                           |
+|        |                                                  |        |4 - Level 4                                                           |
+|        |                                                  |        |5-10 - Reserved                                                       |
+|        |                                                  |        |11 - Automatic                                                        |
+|        |                                                  |        |12 - Automatic on demand                                              |
+|        |                                                  |        |13 - Supply air only                                                  |
+|        |                                                  |        |14 - Exhaust air only                                                 |
+|        |                                                  |        |15 - No action (keep current ventilation mode/level)                  |
+|OMC     |Operation Mode Control                            |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Select next operation mode (edge-trigger)                         |
+|        |                                                  |        |2 - Select previous operation mode (edge-trigger)                     |
+|        |                                                  |        |3 - Reserved                                                          |
+|HBC     |Heat Exchanger Bypass Control                     |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Close bypass (edge-trigger)                                       |
+|        |                                                  |        |2 - Open bypass (edge-trigger)                                        |
+|        |                                                  |        |3 - Reserved                                                          |
+|TOMC    |Timer Operation Mode Control                      |enum    |0 - No action                                                         |
+|        |                                                  |        |1 - Start timer operation mode (edge-trigger)                         |
+|COT     |CO2 Threshold                                     |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|HT      |Humidity Threshold                                |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|AQT     |Air Quality Threshold                             |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Default (use threshold configured in device)                    |
+|RTT     |Room temperature threshold                        |value   |1.0-127.0 ↔ -63.0-63.0 °C                                             |
+
+###### command: 2
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|OMS     |Operation Mode Status                             |enum    |0 - Off                                                               |
+|        |                                                  |        |1 - Level 1                                                           |
+|        |                                                  |        |2 - Level 2                                                           |
+|        |                                                  |        |3 - Level 3                                                           |
+|        |                                                  |        |4 - Level 4                                                           |
+|        |                                                  |        |5-10 - Reserved                                                       |
+|        |                                                  |        |11 - Automatic                                                        |
+|        |                                                  |        |12 - Automatic on demand                                              |
+|        |                                                  |        |13 - Supply air only                                                  |
+|        |                                                  |        |14 - Exhaust air only                                                 |
+|        |                                                  |        |15 - Reserved                                                         |
+|SMS     |Safety Mode Status                                |enum    |0 - Fireplace safety mode disabled                                    |
+|        |                                                  |        |1 - Fireplace safety mode enabled                                     |
+|HBS     |Heat Exchanger Bypass Status                      |enum    |0 - Bypass closed (heat-recovery active)                              |
+|        |                                                  |        |1 - Bypass opened (heat-recovery inactive)                            |
+|SFP     |Supply Air Flap Position                          |enum    |0 - Supply air flap closed                                            |
+|        |                                                  |        |1 - Supply air flap opened                                            |
+|EFP     |Exhaust Air Flap Position                         |enum    |0 - Exhaust air flap closed                                           |
+|        |                                                  |        |1 - Exhaust air flap opened                                           |
+|DMS     |Defrost Mode Status                               |enum    |0 - Defrost mode inactive                                             |
+|        |                                                  |        |1 - Defrost mode active                                               |
+|CPS     |Cooling Protection Status                         |enum    |0 - Cooling protection mode inactive                                  |
+|        |                                                  |        |1 - Cooling protection mode active                                    |
+|OHS     |Outdoor Air Heater Status                         |enum    |0 - Cooling protection mode inactive                                  |
+|        |                                                  |        |1 - Cooling protection mode active                                    |
+|SHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
+|        |                                                  |        |1 - Active                                                            |
+|DHS     |Drain Heater Status                               |enum    |0 - Inactive                                                          |
+|        |                                                  |        |1 - Active                                                            |
+|TOMS    |Timer Operation Mode Status                       |enum    |0 - timer operation mode inactive                                     |
+|        |                                                  |        |1 - timer operation mode active                                       |
+|FMS     |Filter Maintenance Status                         |enum    |0 - Maintenance not required                                          |
+|        |                                                  |        |1 - Maintenance required                                              |
+|WTPS    |Weekly Timer Program Status                       |enum    |0 - Weekly timer program disabled or not configured                   |
+|        |                                                  |        |1 - Weekly timer program active                                       |
+|RTCS    |Room Temperature Control Status                   |enum    |0 - Room temperature control inactive                                 |
+|        |                                                  |        |1 - Room temperature control active                                   |
+|AQS1    |Air Quality Sensor 1                              |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Not available                                                   |
+|MSS     |Master/Slave Configuration Status                 |enum    |0 - Master                                                            |
+|        |                                                  |        |1 - Slave                                                             |
+|AQS2    |Air Quality Sensor 2                              |enum    |0-100 - {value} %                                                     |
+|        |                                                  |        |101-126 - Reserved                                                    |
+|        |                                                  |        |127 - Not available                                                   |
+|OUTT    |Outdoor Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|SPLYT   |Supply Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|INT     |Indoor Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|EXHT    |Exhaust Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
+|SPLYFF  |Supply Air Fan Air Flow Rate                      |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
+|EXHFF   |Exhaust Air Fan Air Flow Rate                     |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
+|SPLYFS  |Supply Fan Speed                                  |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
+|EXHFS   |Exhaust Fan Speed                                 |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
+
+###### command: 3
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|SVI     |Software Version Info                             |value   |0.0-4095.0 ↔ 0.0-4095.0                                               |
+|OHC     |Operation Hours Counter                           |value   |0.0-65535.0 ↔ 0.0-196605.0                                            |
+|DIS     |Digital Input 0...15 Status                       |enum    |1-32768 - {value}                                                     |
+|DOS     |Digital Output 0...15 Status                      |enum    |1-32768 - {value}                                                     |
+|IMS     |Info Message 0...15 Status                        |enum    |1-32768 - {value}                                                     |
+|FS      |Fault 0...31 Status                               |enum    |1-2147483648 - {value}                                                |
 
 </blockquote></details>
 
