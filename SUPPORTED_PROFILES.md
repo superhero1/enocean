@@ -1020,16 +1020,16 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 
 </blockquote></details>
 
-<details><summary>A5-20-06 <i>(valve actuator Micropelt MVA009)</i></summary><blockquote>
+<details><summary>A5-20-06 <i>(Harvesting-powered actuator with local temperature offset control (BI-DIR))</i></summary><blockquote>
 
 ###### direction: 1
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |CV      |Current Valve position                            |value   |0.0-100.0 ↔ 0.0-100.0 %                                               |
-|LOM     |Local Offset Mode defines the format of LO        |enum    |0 - LO is relative                                                    |
+|LOM     |Local Offset Mode                                 |enum    |0 - LO is relative                                                    |
 |        |                                                  |        |1 - LO is absolute                                                    |
-|LO      |Current temperature set-point value               |value   |0.0-80.0 ↔ 0.0-40.0 °C                                                |
-|TMP     |Local Ambient or Feed temperature                 |value   |0.0-160.0 ↔ 0.0-80.0 °C                                               |
+|LO      |Local Offset                                      |value   |0.0-127.0 ↔ 0.0-127.0 °C                                              |
+|TMP     |Local Ambient or Feed temperature                 |value   |0.0-255.0 ↔ 0.0-255.0 °C                                              |
 |TSL     |Indicates which sensor is used for TMP            |enum    |0 - Ambient sensor temp                                               |
 |        |                                                  |        |1 - Feed sensor temperature                                           |
 |ENIE    |Harvesting status                                 |enum    |0 - Not harvesting                                                    |
@@ -1038,8 +1038,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1 - Sufficiently charged                                              |
 |DWO     |Window open detection                             |enum    |0 - No open window detected                                           |
 |        |                                                  |        |1 - Open window detected                                              |
-|LRNB    |Telegram type                                     |enum    |0 - Teach-in telegram                                                 |
-|        |                                                  |        |1 - Data telegram                                                     |
 |RCE     |Indicates radio communication errors              |enum    |0 - Radio communication is stable                                     |
 |        |                                                  |        |1 - Six or more consecutive radio communication errors have occurred  |
 |RSS     |Weak radio signal warning                         |enum    |0 - Radio signal is strong                                            |
@@ -1050,7 +1048,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 ###### direction: 2
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
-|SP      |Valve Position or Temperature Set point           |value   |0.0-100.0 ↔ 0.0-100.0 %                                               |
+|SP      |Valve Position or Temperature Set point           |value   |0.0-255.0 ↔ 0.0-255.0 %                                               |
 |TMP     |Room temperature from room control unit           |value   |0.0-160.0 ↔ 0.0-40.0 °C                                               |
 |REF     |Execute reference-run                             |enum    |0 - Normal operation                                                  |
 |        |                                                  |        |1 - Reference-run and Maintenance Interval                            |
@@ -1941,6 +1939,46 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 </blockquote></details>
 
 <details open><summary>14 <i>(Multi Function Sensors)</i></summary><blockquote>
+<details><summary>D2-14-30 <i>(Sensor for Smoke, Air quality, Hygrothermal comfort, Temperature and Humidity)</i></summary><blockquote>
+
+|shortcut|description                                       |type    |values                                                                |
+|--------|--------------------------------------------------|--------|----                                                                  |
+|SMA0    |Smoke Alarm status                                |enum    |0 - Smoke Alarm non-activated                                         |
+|        |                                                  |        |1 - Smoke Alarm activated                                             |
+|SMA1    |Sensor fault mode status                          |enum    |0 - Sensor Fault mode non-activated                                   |
+|        |                                                  |        |1 - Sensor Fault mode activated                                       |
+|SMA2    |Smoke Alarm Condition analysis: Maintenance       |enum    |0 - Maintenance OK                                                    |
+|        |                                                  |        |1 - Maintenance not done                                              |
+|SMA3    |Smoke Alarm Condition analysis: Humidity          |enum    |0 - Humidity range OK                                                 |
+|        |                                                  |        |1 - Humidity range NOK                                                |
+|SMA4    |Smoke Alarm Condition analysis: Temperature       |enum    |0 - Temperature range OK                                              |
+|        |                                                  |        |1 - Temperature range NOK                                             |
+|SMA5    |Time since last maintenance                       |enum    |0-250 - {value} week(s)                                               |
+|        |                                                  |        |251-254 - Reserved                                                    |
+|        |                                                  |        |255 - Error                                                           |
+|ES      |Energy Storage Status                             |enum    |0 - High                                                              |
+|        |                                                  |        |1 - Medium                                                            |
+|        |                                                  |        |2 - Low                                                               |
+|        |                                                  |        |3 - Critical                                                          |
+|RPLT    |Countdown time until product end of life          |enum    |0-120 - {value} month(s)                                              |
+|        |                                                  |        |121-254 - Reserved                                                    |
+|        |                                                  |        |255 - Error                                                           |
+|TMP8    |Temperature                                       |value   |0.0-250.0 ↔ 0.0-50.0 °C                                               |
+|HUM     |Humidity                                          |value   |0.0-200.0 ↔ 0.0-100.0 %                                               |
+|HCI     |Hygrothermal Comfort Index                        |enum    |0 - Good                                                              |
+|        |                                                  |        |1 - Medium                                                            |
+|        |                                                  |        |2 - Bad                                                               |
+|        |                                                  |        |3 - Error                                                             |
+|IAQTH   |T/Hum. Indoor Air Analysis                        |enum    |0 - Optimal air range                                                 |
+|        |                                                  |        |1 - Dry Air range                                                     |
+|        |                                                  |        |2 - High humidity range                                               |
+|        |                                                  |        |3 - High temperature and humidity range                               |
+|        |                                                  |        |4 - Temperature or Humidity out of analysis range                     |
+|        |                                                  |        |5-6 - Reserved                                                        |
+|        |                                                  |        |7 - Error                                                             |
+
+</blockquote></details>
+
 <details><summary>D2-14-41 <i>(Indoor -Temperature, Humidity XYZ Acceleration, Illumination Sensor)</i></summary><blockquote>
 
 |shortcut|description                                       |type    |values                                                                |
