@@ -2017,9 +2017,8 @@
             <item description="300 sec" value="9" />
             <item description="330 sec" value="10" />
             <item description="360 sec" value="11" />
-            <item description="390 sec" value="11" />
-            <item description="420 sec" value="12" />
-            <item description="450 sec" value="13" />
+            <item description="390 sec" value="12" />
+            <item description="420 sec" value="13" />
             <item description="450 sec" value="14" />
             <item description="480 sec" value="15" />
             <item description="510 sec" value="16" />
@@ -3795,6 +3794,7 @@
         <data command="0" bits="1">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Requested Message Type" shortcut="RMT" offset="5" size="3">
             <item description="Ventilation basic status" value="0" />
@@ -3804,6 +3804,7 @@
         <data command="1" bits="6">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Direct Operation Mode Control" shortcut="DOMC" offset="4" size="4">
             <item description="Off" value="0" />
@@ -3863,6 +3864,7 @@
         <data command="2" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Operation Mode Status" shortcut="OMS" offset="4" size="4">
             <item description="Off" value="0" />
@@ -3902,8 +3904,8 @@
             <item description="Cooling protection mode active" value="1" />
           </enum>
           <enum description="Outdoor Air Heater Status" shortcut="OHS" offset="18" size="1">
-            <item description="Cooling protection mode inactive" value="0" />
-            <item description="Cooling protection mode active" value="1" />
+            <item description="Inactive" value="0" />
+            <item description="Active" value="1" />
           </enum>
           <enum description="Outdoor Air Heater Status" shortcut="SHS" offset="19" size="1">
             <item description="Inactive" value="0" />
@@ -4027,6 +4029,7 @@
         <data command="3" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <value description="Software Version Info" shortcut="SVI" offset="4" size="12" unit="">
             <range>
@@ -4049,16 +4052,16 @@
             </scale>
           </value>
           <enum description="Digital Input 0...15 Status" shortcut="DIS" offset="32" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Digital Output 0...15 Status" shortcut="DOS" offset="48" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Info Message 0...15 Status" shortcut="IMS" offset="64" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Fault 0...31 Status" shortcut="FS" offset="80" size="32">
-            <rangeitem description="{value}" start="1" end="2147483648" />
+            <rangeitem description="{value}" start="0" end="2147483648" />
           </enum>
         </data>
       </profile>
@@ -4072,6 +4075,7 @@
         <data command="0" bits="1">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Requested Message Type" shortcut="RMT" offset="5" size="3">
             <item description="Ventilation basic status" value="0" />
@@ -4081,6 +4085,7 @@
         <data command="1" bits="6">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Direct Operation Mode Control" shortcut="DOMC" offset="4" size="4">
             <item description="Off" value="0" />
@@ -4140,6 +4145,7 @@
         <data command="2" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Operation Mode Status" shortcut="OMS" offset="4" size="4">
             <item description="Off" value="0" />
@@ -4179,8 +4185,8 @@
             <item description="Cooling protection mode active" value="1" />
           </enum>
           <enum description="Outdoor Air Heater Status" shortcut="OHS" offset="18" size="1">
-            <item description="Cooling protection mode inactive" value="0" />
-            <item description="Cooling protection mode active" value="1" />
+            <item description="Inactive" value="0" />
+            <item description="Active" value="1" />
           </enum>
           <enum description="Outdoor Air Heater Status" shortcut="SHS" offset="19" size="1">
             <item description="Inactive" value="0" />
@@ -4304,6 +4310,7 @@
         <data command="3" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <value description="Software Version Info" shortcut="SVI" offset="4" size="12" unit="">
             <range>
@@ -4326,16 +4333,16 @@
             </scale>
           </value>
           <enum description="Digital Input 0...15 Status" shortcut="DIS" offset="32" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Digital Output 0...15 Status" shortcut="DOS" offset="48" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Info Message 0...15 Status" shortcut="IMS" offset="64" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Fault 0...31 Status" shortcut="FS" offset="80" size="32">
-            <rangeitem description="{value}" start="1" end="2147483648" />
+            <rangeitem description="{value}" start="0" end="2147483648" />
           </enum>
         </data>
       </profile>
@@ -4349,6 +4356,7 @@
         <data command="0" bits="1">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Requested Message Type" shortcut="RMT" offset="5" size="3">
             <item description="Ventilation basic status" value="0" />
@@ -4358,6 +4366,7 @@
         <data command="1" bits="6">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Direct Operation Mode Control" shortcut="DOMC" offset="4" size="4">
             <item description="Off" value="0" />
@@ -4417,6 +4426,7 @@
         <data command="2" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Operation Mode Status" shortcut="OMS" offset="4" size="4">
             <item description="Off" value="0" />
@@ -4456,8 +4466,8 @@
             <item description="Cooling protection mode active" value="1" />
           </enum>
           <enum description="Outdoor Air Heater Status" shortcut="OHS" offset="18" size="1">
-            <item description="Cooling protection mode inactive" value="0" />
-            <item description="Cooling protection mode active" value="1" />
+            <item description="Inactive" value="0" />
+            <item description="Active" value="1" />
           </enum>
           <enum description="Outdoor Air Heater Status" shortcut="SHS" offset="19" size="1">
             <item description="Inactive" value="0" />
@@ -4581,6 +4591,7 @@
         <data command="3" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <value description="Software Version Info" shortcut="SVI" offset="4" size="12" unit="">
             <range>
@@ -4603,16 +4614,16 @@
             </scale>
           </value>
           <enum description="Digital Input 0...15 Status" shortcut="DIS" offset="32" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Digital Output 0...15 Status" shortcut="DOS" offset="48" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Info Message 0...15 Status" shortcut="IMS" offset="64" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Fault 0...31 Status" shortcut="FS" offset="80" size="32">
-            <rangeitem description="{value}" start="1" end="2147483648" />
+            <rangeitem description="{value}" start="0" end="2147483648" />
           </enum>
         </data>
       </profile>
@@ -4626,6 +4637,7 @@
         <data command="0" bits="1">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Requested Message Type" shortcut="RMT" offset="5" size="3">
             <item description="Ventilation basic status" value="0" />
@@ -4635,6 +4647,7 @@
         <data command="1" bits="6">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Direct Operation Mode Control" shortcut="DOMC" offset="4" size="4">
             <item description="Off" value="0" />
@@ -4694,6 +4707,7 @@
         <data command="2" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <enum description="Operation Mode Status" shortcut="OMS" offset="4" size="4">
             <item description="Off" value="0" />
@@ -4733,8 +4747,8 @@
             <item description="Cooling protection mode active" value="1" />
           </enum>
           <enum description="Outdoor Air Heater Status" shortcut="OHS" offset="18" size="1">
-            <item description="Cooling protection mode inactive" value="0" />
-            <item description="Cooling protection mode active" value="1" />
+            <item description="Inactive" value="0" />
+            <item description="Active" value="1" />
           </enum>
           <enum description="Outdoor Air Heater Status" shortcut="SHS" offset="19" size="1">
             <item description="Inactive" value="0" />
@@ -4858,6 +4872,7 @@
         <data command="3" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
             <rangeitem description="Message Type {value}" start="0" end="3" />
+            <rangeitem description="Reserved {value}" start="4" end="7" />
           </enum>
           <value description="Software Version Info" shortcut="SVI" offset="4" size="12" unit="">
             <range>
@@ -4880,16 +4895,16 @@
             </scale>
           </value>
           <enum description="Digital Input 0...15 Status" shortcut="DIS" offset="32" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Digital Output 0...15 Status" shortcut="DOS" offset="48" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Info Message 0...15 Status" shortcut="IMS" offset="64" size="16">
-            <rangeitem description="{value}" start="1" end="32768" />
+            <rangeitem description="{value}" start="0" end="32768" />
           </enum>
           <enum description="Fault 0...31 Status" shortcut="FS" offset="80" size="32">
-            <rangeitem description="{value}" start="1" end="2147483648" />
+            <rangeitem description="{value}" start="0" end="2147483648" />
           </enum>
         </data>
       </profile>
