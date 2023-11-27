@@ -966,9 +966,8 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |9 - 300 sec                                                           |
 |        |                                                  |        |10 - 330 sec                                                          |
 |        |                                                  |        |11 - 360 sec                                                          |
-|        |                                                  |        |11 - 390 sec                                                          |
-|        |                                                  |        |12 - 420 sec                                                          |
-|        |                                                  |        |13 - 450 sec                                                          |
+|        |                                                  |        |12 - 390 sec                                                          |
+|        |                                                  |        |13 - 420 sec                                                          |
 |        |                                                  |        |14 - 450 sec                                                          |
 |        |                                                  |        |15 - 480 sec                                                          |
 |        |                                                  |        |16 - 510 sec                                                          |
@@ -2018,6 +2017,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |RMT     |Requested Message Type                            |enum    |0 - Ventilation basic status                                          |
 |        |                                                  |        |1 - Ventilation extended status                                       |
 
@@ -2025,6 +2025,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |DOMC    |Direct Operation Mode Control                     |enum    |0 - Off                                                               |
 |        |                                                  |        |1 - Level 1                                                           |
 |        |                                                  |        |2 - Level 2                                                           |
@@ -2040,10 +2041,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1 - Select next operation mode (edge-trigger)                         |
 |        |                                                  |        |2 - Select previous operation mode (edge-trigger)                     |
 |        |                                                  |        |3 - Reserved                                                          |
-|HBC     |Heat Exchanger Bypass Control                     |enum    |0 - No action                                                         |
-|        |                                                  |        |1 - Close bypass (edge-trigger)                                       |
-|        |                                                  |        |2 - Open bypass (edge-trigger)                                        |
-|        |                                                  |        |3 - Reserved                                                          |
 |TOMC    |Timer Operation Mode Control                      |enum    |0 - No action                                                         |
 |        |                                                  |        |1 - Start timer operation mode (edge-trigger)                         |
 |COT     |CO2 Threshold                                     |enum    |0-100 - {value} %                                                     |
@@ -2055,12 +2052,12 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |AQT     |Air Quality Threshold                             |enum    |0-100 - {value} %                                                     |
 |        |                                                  |        |101-126 - Reserved                                                    |
 |        |                                                  |        |127 - Default (use threshold configured in device)                    |
-|RTT     |Room temperature threshold                        |value   |1.0-127.0 ↔ -63.0-63.0 °C                                             |
 
 ###### command: 2
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |OMS     |Operation Mode Status                             |enum    |0 - Off                                                               |
 |        |                                                  |        |1 - Level 1                                                           |
 |        |                                                  |        |2 - Level 2                                                           |
@@ -2072,10 +2069,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |13 - Supply air only                                                  |
 |        |                                                  |        |14 - Exhaust air only                                                 |
 |        |                                                  |        |15 - Reserved                                                         |
-|SMS     |Safety Mode Status                                |enum    |0 - Fireplace safety mode disabled                                    |
-|        |                                                  |        |1 - Fireplace safety mode enabled                                     |
-|HBS     |Heat Exchanger Bypass Status                      |enum    |0 - Bypass closed (heat-recovery active)                              |
-|        |                                                  |        |1 - Bypass opened (heat-recovery inactive)                            |
 |SFP     |Supply Air Flap Position                          |enum    |0 - Supply air flap closed                                            |
 |        |                                                  |        |1 - Supply air flap opened                                            |
 |EFP     |Exhaust Air Flap Position                         |enum    |0 - Exhaust air flap closed                                           |
@@ -2084,32 +2077,19 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1 - Defrost mode active                                               |
 |CPS     |Cooling Protection Status                         |enum    |0 - Cooling protection mode inactive                                  |
 |        |                                                  |        |1 - Cooling protection mode active                                    |
-|OHS     |Outdoor Air Heater Status                         |enum    |0 - Cooling protection mode inactive                                  |
-|        |                                                  |        |1 - Cooling protection mode active                                    |
-|SHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
-|        |                                                  |        |1 - Active                                                            |
 |DHS     |Drain Heater Status                               |enum    |0 - Inactive                                                          |
 |        |                                                  |        |1 - Active                                                            |
 |TOMS    |Timer Operation Mode Status                       |enum    |0 - timer operation mode inactive                                     |
 |        |                                                  |        |1 - timer operation mode active                                       |
 |FMS     |Filter Maintenance Status                         |enum    |0 - Maintenance not required                                          |
 |        |                                                  |        |1 - Maintenance required                                              |
-|WTPS    |Weekly Timer Program Status                       |enum    |0 - Weekly timer program disabled or not configured                   |
-|        |                                                  |        |1 - Weekly timer program active                                       |
-|RTCS    |Room Temperature Control Status                   |enum    |0 - Room temperature control inactive                                 |
-|        |                                                  |        |1 - Room temperature control active                                   |
 |AQS1    |Air Quality Sensor 1                              |enum    |0-100 - {value} %                                                     |
 |        |                                                  |        |101-126 - Reserved                                                    |
 |        |                                                  |        |127 - Not available                                                   |
 |MSS     |Master/Slave Configuration Status                 |enum    |0 - Master                                                            |
 |        |                                                  |        |1 - Slave                                                             |
-|AQS2    |Air Quality Sensor 2                              |enum    |0-100 - {value} %                                                     |
-|        |                                                  |        |101-126 - Reserved                                                    |
-|        |                                                  |        |127 - Not available                                                   |
 |OUTT    |Outdoor Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
 |SPLYT   |Supply Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
-|INT     |Indoor Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
-|EXHT    |Exhaust Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
 |SPLYFF  |Supply Air Fan Air Flow Rate                      |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
 |EXHFF   |Exhaust Air Fan Air Flow Rate                     |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
 |SPLYFS  |Supply Fan Speed                                  |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
@@ -2119,12 +2099,11 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |SVI     |Software Version Info                             |value   |0.0-4095.0 ↔ 0.0-4095.0                                               |
 |OHC     |Operation Hours Counter                           |value   |0.0-65535.0 ↔ 0.0-196605.0                                            |
-|DIS     |Digital Input 0...15 Status                       |enum    |1-32768 - {value}                                                     |
-|DOS     |Digital Output 0...15 Status                      |enum    |1-32768 - {value}                                                     |
-|IMS     |Info Message 0...15 Status                        |enum    |1-32768 - {value}                                                     |
-|FS      |Fault 0...31 Status                               |enum    |1-2147483648 - {value}                                                |
+|IMS     |Info Message 0...15 Status                        |enum    |0-32768 - {value}                                                     |
+|FS      |Fault 0...31 Status                               |enum    |0-2147483648 - {value}                                                |
 
 </blockquote></details>
 
@@ -2134,6 +2113,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |RMT     |Requested Message Type                            |enum    |0 - Ventilation basic status                                          |
 |        |                                                  |        |1 - Ventilation extended status                                       |
 
@@ -2141,6 +2121,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |DOMC    |Direct Operation Mode Control                     |enum    |0 - Off                                                               |
 |        |                                                  |        |1 - Level 1                                                           |
 |        |                                                  |        |2 - Level 2                                                           |
@@ -2156,10 +2137,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1 - Select next operation mode (edge-trigger)                         |
 |        |                                                  |        |2 - Select previous operation mode (edge-trigger)                     |
 |        |                                                  |        |3 - Reserved                                                          |
-|HBC     |Heat Exchanger Bypass Control                     |enum    |0 - No action                                                         |
-|        |                                                  |        |1 - Close bypass (edge-trigger)                                       |
-|        |                                                  |        |2 - Open bypass (edge-trigger)                                        |
-|        |                                                  |        |3 - Reserved                                                          |
 |TOMC    |Timer Operation Mode Control                      |enum    |0 - No action                                                         |
 |        |                                                  |        |1 - Start timer operation mode (edge-trigger)                         |
 |COT     |CO2 Threshold                                     |enum    |0-100 - {value} %                                                     |
@@ -2171,12 +2148,12 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |AQT     |Air Quality Threshold                             |enum    |0-100 - {value} %                                                     |
 |        |                                                  |        |101-126 - Reserved                                                    |
 |        |                                                  |        |127 - Default (use threshold configured in device)                    |
-|RTT     |Room temperature threshold                        |value   |1.0-127.0 ↔ -63.0-63.0 °C                                             |
 
 ###### command: 2
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |OMS     |Operation Mode Status                             |enum    |0 - Off                                                               |
 |        |                                                  |        |1 - Level 1                                                           |
 |        |                                                  |        |2 - Level 2                                                           |
@@ -2188,10 +2165,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |13 - Supply air only                                                  |
 |        |                                                  |        |14 - Exhaust air only                                                 |
 |        |                                                  |        |15 - Reserved                                                         |
-|SMS     |Safety Mode Status                                |enum    |0 - Fireplace safety mode disabled                                    |
-|        |                                                  |        |1 - Fireplace safety mode enabled                                     |
-|HBS     |Heat Exchanger Bypass Status                      |enum    |0 - Bypass closed (heat-recovery active)                              |
-|        |                                                  |        |1 - Bypass opened (heat-recovery inactive)                            |
 |SFP     |Supply Air Flap Position                          |enum    |0 - Supply air flap closed                                            |
 |        |                                                  |        |1 - Supply air flap opened                                            |
 |EFP     |Exhaust Air Flap Position                         |enum    |0 - Exhaust air flap closed                                           |
@@ -2200,9 +2173,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1 - Defrost mode active                                               |
 |CPS     |Cooling Protection Status                         |enum    |0 - Cooling protection mode inactive                                  |
 |        |                                                  |        |1 - Cooling protection mode active                                    |
-|OHS     |Outdoor Air Heater Status                         |enum    |0 - Cooling protection mode inactive                                  |
-|        |                                                  |        |1 - Cooling protection mode active                                    |
-|SHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
+|OHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
 |        |                                                  |        |1 - Active                                                            |
 |DHS     |Drain Heater Status                               |enum    |0 - Inactive                                                          |
 |        |                                                  |        |1 - Active                                                            |
@@ -2210,22 +2181,13 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1 - timer operation mode active                                       |
 |FMS     |Filter Maintenance Status                         |enum    |0 - Maintenance not required                                          |
 |        |                                                  |        |1 - Maintenance required                                              |
-|WTPS    |Weekly Timer Program Status                       |enum    |0 - Weekly timer program disabled or not configured                   |
-|        |                                                  |        |1 - Weekly timer program active                                       |
-|RTCS    |Room Temperature Control Status                   |enum    |0 - Room temperature control inactive                                 |
-|        |                                                  |        |1 - Room temperature control active                                   |
 |AQS1    |Air Quality Sensor 1                              |enum    |0-100 - {value} %                                                     |
 |        |                                                  |        |101-126 - Reserved                                                    |
 |        |                                                  |        |127 - Not available                                                   |
 |MSS     |Master/Slave Configuration Status                 |enum    |0 - Master                                                            |
 |        |                                                  |        |1 - Slave                                                             |
-|AQS2    |Air Quality Sensor 2                              |enum    |0-100 - {value} %                                                     |
-|        |                                                  |        |101-126 - Reserved                                                    |
-|        |                                                  |        |127 - Not available                                                   |
 |OUTT    |Outdoor Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
 |SPLYT   |Supply Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
-|INT     |Indoor Air Temperature                            |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
-|EXHT    |Exhaust Air Temperature                           |value   |0.0-127.0 ↔ -64.0-63.0 °C                                             |
 |SPLYFF  |Supply Air Fan Air Flow Rate                      |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
 |EXHFF   |Exhaust Air Fan Air Flow Rate                     |value   |0.0-1023.0 ↔ 0.0-1023.0 m3/h                                          |
 |SPLYFS  |Supply Fan Speed                                  |value   |0.0-4095.0 ↔ 0.0-4095.0 1/min                                         |
@@ -2235,12 +2197,11 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |SVI     |Software Version Info                             |value   |0.0-4095.0 ↔ 0.0-4095.0                                               |
 |OHC     |Operation Hours Counter                           |value   |0.0-65535.0 ↔ 0.0-196605.0                                            |
-|DIS     |Digital Input 0...15 Status                       |enum    |1-32768 - {value}                                                     |
-|DOS     |Digital Output 0...15 Status                      |enum    |1-32768 - {value}                                                     |
-|IMS     |Info Message 0...15 Status                        |enum    |1-32768 - {value}                                                     |
-|FS      |Fault 0...31 Status                               |enum    |1-2147483648 - {value}                                                |
+|IMS     |Info Message 0...15 Status                        |enum    |0-32768 - {value}                                                     |
+|FS      |Fault 0...31 Status                               |enum    |0-2147483648 - {value}                                                |
 
 </blockquote></details>
 
@@ -2250,6 +2211,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |RMT     |Requested Message Type                            |enum    |0 - Ventilation basic status                                          |
 |        |                                                  |        |1 - Ventilation extended status                                       |
 
@@ -2257,6 +2219,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |DOMC    |Direct Operation Mode Control                     |enum    |0 - Off                                                               |
 |        |                                                  |        |1 - Level 1                                                           |
 |        |                                                  |        |2 - Level 2                                                           |
@@ -2271,10 +2234,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |OMC     |Operation Mode Control                            |enum    |0 - No action                                                         |
 |        |                                                  |        |1 - Select next operation mode (edge-trigger)                         |
 |        |                                                  |        |2 - Select previous operation mode (edge-trigger)                     |
-|        |                                                  |        |3 - Reserved                                                          |
-|HBC     |Heat Exchanger Bypass Control                     |enum    |0 - No action                                                         |
-|        |                                                  |        |1 - Close bypass (edge-trigger)                                       |
-|        |                                                  |        |2 - Open bypass (edge-trigger)                                        |
 |        |                                                  |        |3 - Reserved                                                          |
 |TOMC    |Timer Operation Mode Control                      |enum    |0 - No action                                                         |
 |        |                                                  |        |1 - Start timer operation mode (edge-trigger)                         |
@@ -2293,6 +2252,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |OMS     |Operation Mode Status                             |enum    |0 - Off                                                               |
 |        |                                                  |        |1 - Level 1                                                           |
 |        |                                                  |        |2 - Level 2                                                           |
@@ -2304,23 +2264,13 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |13 - Supply air only                                                  |
 |        |                                                  |        |14 - Exhaust air only                                                 |
 |        |                                                  |        |15 - Reserved                                                         |
-|SMS     |Safety Mode Status                                |enum    |0 - Fireplace safety mode disabled                                    |
-|        |                                                  |        |1 - Fireplace safety mode enabled                                     |
-|HBS     |Heat Exchanger Bypass Status                      |enum    |0 - Bypass closed (heat-recovery active)                              |
-|        |                                                  |        |1 - Bypass opened (heat-recovery inactive)                            |
-|SFP     |Supply Air Flap Position                          |enum    |0 - Supply air flap closed                                            |
-|        |                                                  |        |1 - Supply air flap opened                                            |
-|EFP     |Exhaust Air Flap Position                         |enum    |0 - Exhaust air flap closed                                           |
-|        |                                                  |        |1 - Exhaust air flap opened                                           |
 |DMS     |Defrost Mode Status                               |enum    |0 - Defrost mode inactive                                             |
 |        |                                                  |        |1 - Defrost mode active                                               |
 |CPS     |Cooling Protection Status                         |enum    |0 - Cooling protection mode inactive                                  |
 |        |                                                  |        |1 - Cooling protection mode active                                    |
-|OHS     |Outdoor Air Heater Status                         |enum    |0 - Cooling protection mode inactive                                  |
-|        |                                                  |        |1 - Cooling protection mode active                                    |
-|SHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
+|OHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
 |        |                                                  |        |1 - Active                                                            |
-|DHS     |Drain Heater Status                               |enum    |0 - Inactive                                                          |
+|SHS     |Supply Air Heater Status                          |enum    |0 - Inactive                                                          |
 |        |                                                  |        |1 - Active                                                            |
 |TOMS    |Timer Operation Mode Status                       |enum    |0 - timer operation mode inactive                                     |
 |        |                                                  |        |1 - timer operation mode active                                       |
@@ -2333,8 +2283,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |AQS1    |Air Quality Sensor 1                              |enum    |0-100 - {value} %                                                     |
 |        |                                                  |        |101-126 - Reserved                                                    |
 |        |                                                  |        |127 - Not available                                                   |
-|MSS     |Master/Slave Configuration Status                 |enum    |0 - Master                                                            |
-|        |                                                  |        |1 - Slave                                                             |
 |AQS2    |Air Quality Sensor 2                              |enum    |0-100 - {value} %                                                     |
 |        |                                                  |        |101-126 - Reserved                                                    |
 |        |                                                  |        |127 - Not available                                                   |
@@ -2351,12 +2299,13 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |SVI     |Software Version Info                             |value   |0.0-4095.0 ↔ 0.0-4095.0                                               |
 |OHC     |Operation Hours Counter                           |value   |0.0-65535.0 ↔ 0.0-196605.0                                            |
-|DIS     |Digital Input 0...15 Status                       |enum    |1-32768 - {value}                                                     |
-|DOS     |Digital Output 0...15 Status                      |enum    |1-32768 - {value}                                                     |
-|IMS     |Info Message 0...15 Status                        |enum    |1-32768 - {value}                                                     |
-|FS      |Fault 0...31 Status                               |enum    |1-2147483648 - {value}                                                |
+|DIS     |Digital Input 0...15 Status                       |enum    |0-32768 - {value}                                                     |
+|DOS     |Digital Output 0...15 Status                      |enum    |0-32768 - {value}                                                     |
+|IMS     |Info Message 0...15 Status                        |enum    |0-32768 - {value}                                                     |
+|FS      |Fault 0...31 Status                               |enum    |0-2147483648 - {value}                                                |
 
 </blockquote></details>
 
@@ -2366,6 +2315,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |RMT     |Requested Message Type                            |enum    |0 - Ventilation basic status                                          |
 |        |                                                  |        |1 - Ventilation extended status                                       |
 
@@ -2373,6 +2323,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |DOMC    |Direct Operation Mode Control                     |enum    |0 - Off                                                               |
 |        |                                                  |        |1 - Level 1                                                           |
 |        |                                                  |        |2 - Level 2                                                           |
@@ -2409,6 +2360,7 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |OMS     |Operation Mode Status                             |enum    |0 - Off                                                               |
 |        |                                                  |        |1 - Level 1                                                           |
 |        |                                                  |        |2 - Level 2                                                           |
@@ -2424,19 +2376,13 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |        |                                                  |        |1 - Fireplace safety mode enabled                                     |
 |HBS     |Heat Exchanger Bypass Status                      |enum    |0 - Bypass closed (heat-recovery active)                              |
 |        |                                                  |        |1 - Bypass opened (heat-recovery inactive)                            |
-|SFP     |Supply Air Flap Position                          |enum    |0 - Supply air flap closed                                            |
-|        |                                                  |        |1 - Supply air flap opened                                            |
-|EFP     |Exhaust Air Flap Position                         |enum    |0 - Exhaust air flap closed                                           |
-|        |                                                  |        |1 - Exhaust air flap opened                                           |
 |DMS     |Defrost Mode Status                               |enum    |0 - Defrost mode inactive                                             |
 |        |                                                  |        |1 - Defrost mode active                                               |
 |CPS     |Cooling Protection Status                         |enum    |0 - Cooling protection mode inactive                                  |
 |        |                                                  |        |1 - Cooling protection mode active                                    |
-|OHS     |Outdoor Air Heater Status                         |enum    |0 - Cooling protection mode inactive                                  |
-|        |                                                  |        |1 - Cooling protection mode active                                    |
-|SHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
+|OHS     |Outdoor Air Heater Status                         |enum    |0 - Inactive                                                          |
 |        |                                                  |        |1 - Active                                                            |
-|DHS     |Drain Heater Status                               |enum    |0 - Inactive                                                          |
+|SHS     |Supply Air Heater Status                          |enum    |0 - Inactive                                                          |
 |        |                                                  |        |1 - Active                                                            |
 |TOMS    |Timer Operation Mode Status                       |enum    |0 - timer operation mode inactive                                     |
 |        |                                                  |        |1 - timer operation mode active                                       |
@@ -2449,8 +2395,6 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |AQS1    |Air Quality Sensor 1                              |enum    |0-100 - {value} %                                                     |
 |        |                                                  |        |101-126 - Reserved                                                    |
 |        |                                                  |        |127 - Not available                                                   |
-|MSS     |Master/Slave Configuration Status                 |enum    |0 - Master                                                            |
-|        |                                                  |        |1 - Slave                                                             |
 |AQS2    |Air Quality Sensor 2                              |enum    |0-100 - {value} %                                                     |
 |        |                                                  |        |101-126 - Reserved                                                    |
 |        |                                                  |        |127 - Not available                                                   |
@@ -2467,12 +2411,13 @@ All profiles (should) correspond to the official [EEP](http://www.enocean-allian
 |shortcut|description                                       |type    |values                                                                |
 |--------|--------------------------------------------------|--------|----                                                                  |
 |MT      |Message Type                                      |enum    |0-3 - Message Type {value}                                            |
+|        |                                                  |        |4-7 - Reserved {value}                                                |
 |SVI     |Software Version Info                             |value   |0.0-4095.0 ↔ 0.0-4095.0                                               |
 |OHC     |Operation Hours Counter                           |value   |0.0-65535.0 ↔ 0.0-196605.0                                            |
-|DIS     |Digital Input 0...15 Status                       |enum    |1-32768 - {value}                                                     |
-|DOS     |Digital Output 0...15 Status                      |enum    |1-32768 - {value}                                                     |
-|IMS     |Info Message 0...15 Status                        |enum    |1-32768 - {value}                                                     |
-|FS      |Fault 0...31 Status                               |enum    |1-2147483648 - {value}                                                |
+|DIS     |Digital Input 0...15 Status                       |enum    |0-32768 - {value}                                                     |
+|DOS     |Digital Output 0...15 Status                      |enum    |0-32768 - {value}                                                     |
+|IMS     |Info Message 0...15 Status                        |enum    |0-32768 - {value}                                                     |
+|FS      |Fault 0...31 Status                               |enum    |0-2147483648 - {value}                                                |
 
 </blockquote></details>
 

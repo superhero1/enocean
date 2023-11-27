@@ -3845,12 +3845,6 @@
             <item description="Select previous operation mode (edge-trigger)" value="2" />
             <item description="Reserved" value="3" />
           </enum>
-          <enum description="Heat Exchanger Bypass Control" shortcut="HBC" offset="10" size="2">
-            <item description="No action" value="0" />
-            <item description="Close bypass (edge-trigger)" value="1" />
-            <item description="Open bypass (edge-trigger)" value="2" />
-            <item description="Reserved" value="3" />
-          </enum>
           <enum description="Timer Operation Mode Control" shortcut="TOMC" offset="16" size="1">
             <item description="No action" value="0" />
             <item description="Start timer operation mode (edge-trigger)" value="1" />
@@ -3870,16 +3864,6 @@
             <rangeitem description="Reserved" start="101" end="126" />
             <item description="Default (use threshold configured in device)" value="127" />
           </enum>
-          <value description="Room temperature threshold" shortcut="RTT" offset="41" size="7" unit="°C">
-            <range>
-              <min>1</min>
-              <max>127</max>
-            </range>
-            <scale>
-              <min>-63.0</min>
-              <max>63.0</max>
-            </scale>
-          </value>
         </data>
         <data command="2" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
@@ -3899,14 +3883,6 @@
             <item description="Exhaust air only" value="14" />
             <item description="Reserved" value="15" />
           </enum>
-          <enum description="Safety Mode Status" shortcut="SMS" offset="12" size="1">
-            <item description="Fireplace safety mode disabled" value="0" />
-            <item description="Fireplace safety mode enabled" value="1" />
-          </enum>
-          <enum description="Heat Exchanger Bypass Status" shortcut="HBS" offset="13" size="1">
-            <item description="Bypass closed (heat-recovery active)" value="0" />
-            <item description="Bypass opened (heat-recovery inactive)" value="1" />
-          </enum>
           <enum description="Supply Air Flap Position" shortcut="SFP" offset="14" size="1">
             <item description="Supply air flap closed" value="0" />
             <item description="Supply air flap opened" value="1" />
@@ -3923,14 +3899,6 @@
             <item description="Cooling protection mode inactive" value="0" />
             <item description="Cooling protection mode active" value="1" />
           </enum>
-          <enum description="Outdoor Air Heater Status" shortcut="OHS" offset="18" size="1">
-            <item description="Inactive" value="0" />
-            <item description="Active" value="1" />
-          </enum>
-          <enum description="Outdoor Air Heater Status" shortcut="SHS" offset="19" size="1">
-            <item description="Inactive" value="0" />
-            <item description="Active" value="1" />
-          </enum>
           <enum description="Drain Heater Status" shortcut="DHS" offset="20" size="1">
             <item description="Inactive" value="0" />
             <item description="Active" value="1" />
@@ -3943,14 +3911,6 @@
             <item description="Maintenance not required" value="0" />
             <item description="Maintenance required" value="1" />
           </enum>
-          <enum description="Weekly Timer Program Status" shortcut="WTPS" offset="23" size="1">
-            <item description="Weekly timer program disabled or not configured" value="0" />
-            <item description="Weekly timer program active" value="1" />
-          </enum>
-          <enum description="Room Temperature Control Status" shortcut="RTCS" offset="24" size="1">
-            <item description="Room temperature control inactive" value="0" />
-            <item description="Room temperature control active" value="1" />
-          </enum>
           <enum description="Air Quality Sensor 1" shortcut="AQS1" offset="25" size="7">
             <rangeitem description="{value} %" start="0" end="100" />
             <rangeitem description="Reserved" start="101" end="126" />
@@ -3959,11 +3919,6 @@
           <enum description="Master/Slave Configuration Status" shortcut="MSS" offset="32" size="1">
             <item description="Master" value="0" />
             <item description="Slave" value="1" />
-          </enum>
-          <enum description="Air Quality Sensor 2" shortcut="AQS2" offset="33" size="7">
-            <rangeitem description="{value} %" start="0" end="100" />
-            <rangeitem description="Reserved" start="101" end="126" />
-            <item description="Not available" value="127" />
           </enum>
           <value description="Outdoor Air Temperature" shortcut="OUTT" offset="40" size="7" unit="°C">
             <range>
@@ -3976,26 +3931,6 @@
             </scale>
           </value>
           <value description="Supply Air Temperature" shortcut="SPLYT" offset="47" size="7" unit="°C">
-            <range>
-              <min>0</min>
-              <max>127</max>
-            </range>
-            <scale>
-              <min>-64.0</min>
-              <max>63.0</max>
-            </scale>
-          </value>
-          <value description="Indoor Air Temperature" shortcut="INT" offset="54" size="7" unit="°C">
-            <range>
-              <min>0</min>
-              <max>127</max>
-            </range>
-            <scale>
-              <min>-64.0</min>
-              <max>63.0</max>
-            </scale>
-          </value>
-          <value description="Exhaust Air Temperature" shortcut="EXHT" offset="61" size="7" unit="°C">
             <range>
               <min>0</min>
               <max>127</max>
@@ -4071,12 +4006,6 @@
               <max>196605</max>
             </scale>
           </value>
-          <enum description="Digital Input 0...15 Status" shortcut="DIS" offset="32" size="16">
-            <rangeitem description="{value}" start="0" end="32768" />
-          </enum>
-          <enum description="Digital Output 0...15 Status" shortcut="DOS" offset="48" size="16">
-            <rangeitem description="{value}" start="0" end="32768" />
-          </enum>
           <enum description="Info Message 0...15 Status" shortcut="IMS" offset="64" size="16">
             <rangeitem description="{value}" start="0" end="32768" />
           </enum>
@@ -4126,12 +4055,6 @@
             <item description="Select previous operation mode (edge-trigger)" value="2" />
             <item description="Reserved" value="3" />
           </enum>
-          <enum description="Heat Exchanger Bypass Control" shortcut="HBC" offset="10" size="2">
-            <item description="No action" value="0" />
-            <item description="Close bypass (edge-trigger)" value="1" />
-            <item description="Open bypass (edge-trigger)" value="2" />
-            <item description="Reserved" value="3" />
-          </enum>
           <enum description="Timer Operation Mode Control" shortcut="TOMC" offset="16" size="1">
             <item description="No action" value="0" />
             <item description="Start timer operation mode (edge-trigger)" value="1" />
@@ -4151,16 +4074,6 @@
             <rangeitem description="Reserved" start="101" end="126" />
             <item description="Default (use threshold configured in device)" value="127" />
           </enum>
-          <value description="Room temperature threshold" shortcut="RTT" offset="41" size="7" unit="°C">
-            <range>
-              <min>1</min>
-              <max>127</max>
-            </range>
-            <scale>
-              <min>-63.0</min>
-              <max>63.0</max>
-            </scale>
-          </value>
         </data>
         <data command="2" bits="14">
           <enum description="Message Type" shortcut="MT" offset="0" size="3">
@@ -4179,14 +4092,6 @@
             <item description="Supply air only" value="13" />
             <item description="Exhaust air only" value="14" />
             <item description="Reserved" value="15" />
-          </enum>
-          <enum description="Safety Mode Status" shortcut="SMS" offset="12" size="1">
-            <item description="Fireplace safety mode disabled" value="0" />
-            <item description="Fireplace safety mode enabled" value="1" />
-          </enum>
-          <enum description="Heat Exchanger Bypass Status" shortcut="HBS" offset="13" size="1">
-            <item description="Bypass closed (heat-recovery active)" value="0" />
-            <item description="Bypass opened (heat-recovery inactive)" value="1" />
           </enum>
           <enum description="Supply Air Flap Position" shortcut="SFP" offset="14" size="1">
             <item description="Supply air flap closed" value="0" />
@@ -4208,10 +4113,6 @@
             <item description="Inactive" value="0" />
             <item description="Active" value="1" />
           </enum>
-          <enum description="Outdoor Air Heater Status" shortcut="SHS" offset="19" size="1">
-            <item description="Inactive" value="0" />
-            <item description="Active" value="1" />
-          </enum>
           <enum description="Drain Heater Status" shortcut="DHS" offset="20" size="1">
             <item description="Inactive" value="0" />
             <item description="Active" value="1" />
@@ -4224,14 +4125,6 @@
             <item description="Maintenance not required" value="0" />
             <item description="Maintenance required" value="1" />
           </enum>
-          <enum description="Weekly Timer Program Status" shortcut="WTPS" offset="23" size="1">
-            <item description="Weekly timer program disabled or not configured" value="0" />
-            <item description="Weekly timer program active" value="1" />
-          </enum>
-          <enum description="Room Temperature Control Status" shortcut="RTCS" offset="24" size="1">
-            <item description="Room temperature control inactive" value="0" />
-            <item description="Room temperature control active" value="1" />
-          </enum>
           <enum description="Air Quality Sensor 1" shortcut="AQS1" offset="25" size="7">
             <rangeitem description="{value} %" start="0" end="100" />
             <rangeitem description="Reserved" start="101" end="126" />
@@ -4240,11 +4133,6 @@
           <enum description="Master/Slave Configuration Status" shortcut="MSS" offset="32" size="1">
             <item description="Master" value="0" />
             <item description="Slave" value="1" />
-          </enum>
-          <enum description="Air Quality Sensor 2" shortcut="AQS2" offset="33" size="7">
-            <rangeitem description="{value} %" start="0" end="100" />
-            <rangeitem description="Reserved" start="101" end="126" />
-            <item description="Not available" value="127" />
           </enum>
           <value description="Outdoor Air Temperature" shortcut="OUTT" offset="40" size="7" unit="°C">
             <range>
@@ -4257,26 +4145,6 @@
             </scale>
           </value>
           <value description="Supply Air Temperature" shortcut="SPLYT" offset="47" size="7" unit="°C">
-            <range>
-              <min>0</min>
-              <max>127</max>
-            </range>
-            <scale>
-              <min>-64.0</min>
-              <max>63.0</max>
-            </scale>
-          </value>
-          <value description="Indoor Air Temperature" shortcut="INT" offset="54" size="7" unit="°C">
-            <range>
-              <min>0</min>
-              <max>127</max>
-            </range>
-            <scale>
-              <min>-64.0</min>
-              <max>63.0</max>
-            </scale>
-          </value>
-          <value description="Exhaust Air Temperature" shortcut="EXHT" offset="61" size="7" unit="°C">
             <range>
               <min>0</min>
               <max>127</max>
@@ -4352,12 +4220,6 @@
               <max>196605</max>
             </scale>
           </value>
-          <enum description="Digital Input 0...15 Status" shortcut="DIS" offset="32" size="16">
-            <rangeitem description="{value}" start="0" end="32768" />
-          </enum>
-          <enum description="Digital Output 0...15 Status" shortcut="DOS" offset="48" size="16">
-            <rangeitem description="{value}" start="0" end="32768" />
-          </enum>
           <enum description="Info Message 0...15 Status" shortcut="IMS" offset="64" size="16">
             <rangeitem description="{value}" start="0" end="32768" />
           </enum>
@@ -4405,12 +4267,6 @@
             <item description="No action" value="0" />
             <item description="Select next operation mode (edge-trigger)" value="1" />
             <item description="Select previous operation mode (edge-trigger)" value="2" />
-            <item description="Reserved" value="3" />
-          </enum>
-          <enum description="Heat Exchanger Bypass Control" shortcut="HBC" offset="10" size="2">
-            <item description="No action" value="0" />
-            <item description="Close bypass (edge-trigger)" value="1" />
-            <item description="Open bypass (edge-trigger)" value="2" />
             <item description="Reserved" value="3" />
           </enum>
           <enum description="Timer Operation Mode Control" shortcut="TOMC" offset="16" size="1">
@@ -4461,22 +4317,6 @@
             <item description="Exhaust air only" value="14" />
             <item description="Reserved" value="15" />
           </enum>
-          <enum description="Safety Mode Status" shortcut="SMS" offset="12" size="1">
-            <item description="Fireplace safety mode disabled" value="0" />
-            <item description="Fireplace safety mode enabled" value="1" />
-          </enum>
-          <enum description="Heat Exchanger Bypass Status" shortcut="HBS" offset="13" size="1">
-            <item description="Bypass closed (heat-recovery active)" value="0" />
-            <item description="Bypass opened (heat-recovery inactive)" value="1" />
-          </enum>
-          <enum description="Supply Air Flap Position" shortcut="SFP" offset="14" size="1">
-            <item description="Supply air flap closed" value="0" />
-            <item description="Supply air flap opened" value="1" />
-          </enum>
-          <enum description="Exhaust Air Flap Position" shortcut="EFP" offset="15" size="1">
-            <item description="Exhaust air flap closed" value="0" />
-            <item description="Exhaust air flap opened" value="1" />
-          </enum>
           <enum description="Defrost Mode Status" shortcut="DMS" offset="16" size="1">
             <item description="Defrost mode inactive" value="0" />
             <item description="Defrost mode active" value="1" />
@@ -4489,11 +4329,7 @@
             <item description="Inactive" value="0" />
             <item description="Active" value="1" />
           </enum>
-          <enum description="Outdoor Air Heater Status" shortcut="SHS" offset="19" size="1">
-            <item description="Inactive" value="0" />
-            <item description="Active" value="1" />
-          </enum>
-          <enum description="Drain Heater Status" shortcut="DHS" offset="20" size="1">
+          <enum description="Supply Air Heater Status" shortcut="SHS" offset="19" size="1">
             <item description="Inactive" value="0" />
             <item description="Active" value="1" />
           </enum>
@@ -4517,10 +4353,6 @@
             <rangeitem description="{value} %" start="0" end="100" />
             <rangeitem description="Reserved" start="101" end="126" />
             <item description="Not available" value="127" />
-          </enum>
-          <enum description="Master/Slave Configuration Status" shortcut="MSS" offset="32" size="1">
-            <item description="Master" value="0" />
-            <item description="Slave" value="1" />
           </enum>
           <enum description="Air Quality Sensor 2" shortcut="AQS2" offset="33" size="7">
             <rangeitem description="{value} %" start="0" end="100" />
@@ -4750,14 +4582,6 @@
             <item description="Bypass closed (heat-recovery active)" value="0" />
             <item description="Bypass opened (heat-recovery inactive)" value="1" />
           </enum>
-          <enum description="Supply Air Flap Position" shortcut="SFP" offset="14" size="1">
-            <item description="Supply air flap closed" value="0" />
-            <item description="Supply air flap opened" value="1" />
-          </enum>
-          <enum description="Exhaust Air Flap Position" shortcut="EFP" offset="15" size="1">
-            <item description="Exhaust air flap closed" value="0" />
-            <item description="Exhaust air flap opened" value="1" />
-          </enum>
           <enum description="Defrost Mode Status" shortcut="DMS" offset="16" size="1">
             <item description="Defrost mode inactive" value="0" />
             <item description="Defrost mode active" value="1" />
@@ -4770,11 +4594,7 @@
             <item description="Inactive" value="0" />
             <item description="Active" value="1" />
           </enum>
-          <enum description="Outdoor Air Heater Status" shortcut="SHS" offset="19" size="1">
-            <item description="Inactive" value="0" />
-            <item description="Active" value="1" />
-          </enum>
-          <enum description="Drain Heater Status" shortcut="DHS" offset="20" size="1">
+          <enum description="Supply Air Heater Status" shortcut="SHS" offset="19" size="1">
             <item description="Inactive" value="0" />
             <item description="Active" value="1" />
           </enum>
@@ -4798,10 +4618,6 @@
             <rangeitem description="{value} %" start="0" end="100" />
             <rangeitem description="Reserved" start="101" end="126" />
             <item description="Not available" value="127" />
-          </enum>
-          <enum description="Master/Slave Configuration Status" shortcut="MSS" offset="32" size="1">
-            <item description="Master" value="0" />
-            <item description="Slave" value="1" />
           </enum>
           <enum description="Air Quality Sensor 2" shortcut="AQS2" offset="33" size="7">
             <rangeitem description="{value} %" start="0" end="100" />
