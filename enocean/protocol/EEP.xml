@@ -2199,7 +2199,7 @@
             <item description="Reference-run and Maintenance Interval" value="1" />
           </enum>
           <enum shortcut="RFC" description="Radio duty cycle selection." offset="17" size="3">
-            <item description="AUTO (default)", value="0" />
+            <item description="AUTO (default)" value="0" />
             <item description="2 minutes" value="1" />
             <item description="5 minutes" value="2" />
             <item description="10 minutes" value="3" />
